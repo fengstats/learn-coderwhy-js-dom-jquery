@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10-continue与break</title>
+  <script>
+    // 1. continue关键字
+    // 小案例：假设我有五个包子，迟到第三个包子的时候发现有虫子，我扔了，继续吃第四个第五个
+    if (false) {
+      for (var i = 1; i <= 5; i++) {
+        console.log('我在吃第' + i + '个包子');
+        if (i == 3) {
+          console.log('妈的第' + i + '有虫 滚nm的');
+          continue;
+        }
+        console.log('包子好吃');
+      }
+    }
+
+    // 2. break 关键字
+    // 小案例：还是我有五个包子，迟到第三个包子的时候发现有虫子，我扔了，第四个第五个我也没心情吃了
+    if (false) {
+      for (var i = 1; i <= 5; i++) {
+        console.log('我在吃第' + i + '个包子');
+        if (i == 3) {
+          console.log('妈的第' + i + '有虫 滚nm的');
+          // 直接退出循环
+          break;
+        }
+        console.log('包子好吃');
+      }
+    }
+
+    // 3. 求整数1~100的累加值，但是要求跳过个位为3的数
+    if (true) {
+      var sum = 0;
+      for (var i = 1; i <= 100; i++) {
+        if (i % 10 == 3) {
+          console.log('跳过: ' + i)
+          continue;
+        }
+        sum += i;
+      }
+    }
+    console.log('最终结果为: ' + sum)
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
