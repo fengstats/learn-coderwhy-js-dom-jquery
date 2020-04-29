@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02-JS没有块级作用域(es5)</title>
+  <script>
+    // 块级作用域: 类似java C 等编程语言中 {} 代表一个块级作用域，而在JS中(es5)是没有块级域的 就是在{}中定义的变量 外部也可以直接使用
+    if (3 < 5) {
+      var num = 10;
+    }
+    console.log(num);
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

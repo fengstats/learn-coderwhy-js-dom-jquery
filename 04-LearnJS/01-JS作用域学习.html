@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-JS作用域学习</title>
+  <script>
+    // JS的作用域：代码名字（变量）在某个范围内起到的作用域效果，目的是为了提高程序的可靠性更重要的是减少命名冲突
+    // 1. js的作用域(es6)之前 es5: 市场上的一套JS语法工业标准分为了 a.全局作用域 b.局部作用域
+    // a. 全局作用域：整个script标签 或者是一个单独的js文件
+    var num = 10;
+    // 如果在定义num这个变量就会产生冲突
+    var num = 30;
+    console.log(num);
+    // b. 局部作用域：在函数内部就是局部作用域，意思就是这个代码名字只在函数内部起到效果与作用
+    function fn() {
+      // 局部作用域
+      var num = 20;
+      console.log(num);
+    }
+    fn();
+
+
+    // 2. 变量的作用域：根据作用域的不同我们变量也分为全局变量与局部变量
+    // 全局变量：全局也就是整个script中都可以使用
+    // 静态变量：只有在函数内部中声明使用的变量，不能够在函数外使用
+
+    // 3. 从执行效率来看全局变量与局部变量
+    // a. 全局变量只有在浏览器关闭的时候才会销毁，比较占用内存资源
+    // b. 局部变量只要在函数关闭的时候就会销毁
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

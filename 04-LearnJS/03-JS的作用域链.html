@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03-JS的作用域链</title>
+
+  <script>
+    // 作用域链: 内部函数访问外部函数的变量，采取的是链式查找的方式来决定值得，这种结构我们称为链式访问
+    // 简单来说就是就近原则
+    var num = 20;
+
+    function fn() { // 外部函数
+      var num = 200;
+
+      function fun() { // 内部函数
+        console.log(num); // 200
+      }
+      fun();
+    }
+
+    fn();
+
+  </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
