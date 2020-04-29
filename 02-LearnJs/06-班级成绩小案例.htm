@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06-班级成绩小案例</title>
+  <script>
+    // 1. 计算班级人数 总成绩 平均分
+    if (false) {
+      var avg = 0;
+      var score = 0;
+      var tempscore = 0;
+      var num = prompt('请输入班级人数')
+      for (var i = 1; i <= num; i++) {
+        tmpscore = parseInt(prompt('请输入第' + i + '个学生的成绩'))
+        if (isNaN(tmpscore)) {
+          console.log(i + '号学生成绩NaN')
+          tmpscore = 0;
+        }
+        score += tmpscore;
+      }
+
+      avg = score / num;
+      alert('班级总人数为: ' + num)
+      alert('班级总成绩为: ' + score);
+      alert('班级平均分为: ' + avg);
+    }
+
+    // 2. 打印★
+    if (false) {
+      var num1 = prompt('需要打印几颗星?')
+      var str = '';
+      for (var i = 1; i <= num1; i++) {
+        str += '★'
+        console.log(str)
+      }
+    }  
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

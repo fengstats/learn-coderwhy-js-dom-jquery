@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07-双重for循环</title>
+  <script>
+    // 1. 小星星(倒三角形)
+    // 思路：双重for循环
+    // 第一层for循环控制现在需要几个小星星
+    // 第二层for循环实现将几颗小星星累加后给到第一层循环进行打印即可
+    if (false) {
+      var num = prompt('需要几颗小星星?');
+      var str = '';
+      for (var i = num; i >= 1; i--) {
+        // str: 进入时清空上一次累加小星星
+        str = ''
+        // i: 打印小星星个数
+        for (var j = 1; j <= i; j++) {
+          str += '★';
+        }
+        console.log(str);
+      }
+    }
+
+    // 2. 一共5行 每行打印五个小星星
+    if (false) {
+      var str = '';
+      var rows = prompt('请你输入行数: ');
+      var cols = prompt('请你输入列数: ')
+      for (var i = 1; i <= rows; i++) {
+        for (var j = 1; j <= cols; j++) {
+          str += '★';
+        }
+        str += '\n';
+      }
+
+      console.log(str);
+    }
+
+    // 3. 正三角形
+    if (false) {
+      var str = '';
+      for (var i = 1; i <= 10; i++) {
+        str += '★';
+        console.log(str)
+      }
+    }
+
+
+    // 4. 九九乘法表
+    if (true) {
+      var row = 9;
+      var col = 9;
+      str = '';
+      // 外层循环: 控制行数
+      // 内层循环：控制列数
+      for (var i = 1; i <= row; i++) {
+        // j 不会超过 i 如：第一行就是一列，第二行就是两列
+        for (var j = 1; j <= i; j++) {
+          str += j + 'x' + i + '=' + i * j + '\t';
+        }
+        str += '\n';
+      }
+      console.log(str);
+    }
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
