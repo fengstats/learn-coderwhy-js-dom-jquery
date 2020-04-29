@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03-短路运算(逻辑中断)</title>
+  <script>
+    // 1. 用我们的布尔值参与的逻辑运算 true && false == false
+    // 2. 123 && 456 是值 或者是 表达式 参与逻辑运算
+    // 3. 逻辑&&(与)短路运算 如果表达式1 结果为真 则返回表达式2 如果表达式1结果为假 则返回表达式1
+    console.log(123 && 456);  // 456
+    console.log(0 && 122);    // 0 因为第一个表达式结果为假 所以没有必要去看后面的表达式
+    console.log('' && 122 && 111 * 111); // '' 同理
+
+    // 4. 逻辑||(或)短路运算 如果表达式1 结果为真 则返回表达式1 如果表达式1结果为假 则返回表达式2
+    var num = 0;
+    console.log(112 || 11);   // 112
+    console.log(10 || num++); // 10 表达式1为真 短路运算 num++不在执行
+    console.log(num);         // 0
+    console.log(0 || ++num);  // 1 表达式1为假 执行num++并返回
+    console.log(num);         // 1
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

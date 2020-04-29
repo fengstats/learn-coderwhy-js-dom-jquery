@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02-自增运算符</title>
+  <script>
+    // 1. 原始自增写法
+    var num = 1;
+    num = num + 1;
+    console.log(num); // 2
+
+    var str = '我爱你中国'
+    console.log("长度", str.length);
+
+    // 2. 递增运算符 可以写在变量的前面 也可以写在变量的后面
+    var num2 = 1;
+    // 前面：前置递增运算
+    // 先加1后返回
+    console.log(++num2); // 2
+
+    // 后面：后置递增运算
+    // 先返回后加1
+    console.log(num2++); // 2
+    console.log(num2);   // 3
+
+    // ==(等于) 值一样即可 默认转换数据类型 会把字符串类型转换为数字型
+    console.log('18' == 18);    // true
+
+    // ===(全等) 必须一模一样 数据类型 and 值一样
+    console.log('18' === 18);   // false
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
