@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07-函数封装使用</title>
+  <script>
+    // 1. 将数组反转
+    function getReverse(arr) {
+      newArr = [];
+      for (var i = arr.length - 1; i >= 0; i--) {
+        newArr[newArr.length] = arr[i];
+      }
+
+      return newArr;
+    }
+
+    // 2. 函数封装冒泡排序: 升序-从小到大
+    function getSort(arr) {
+      var tmp;
+      for (var i = 0; i < arr.length; i++) {
+        for (var j = 0; j < arr.length - i - 1; j++) {
+          if (arr[j] > arr[j + 1]) {
+            tmp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = tmp;
+          }
+        }
+      }
+      // 返回数组(修改的是原始数组)
+      return arr;
+    }
+
+    // 3. 封装一个函数 要求输入年份返回是否是闰年
+    function getYear(year) {
+      // 如果是闰年返回true 否则返回false
+      if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    // 4. 函数是可以相互调用的
+    function fn1() {
+      return 'fn1';
+    }
+
+    function fn2() {
+      var a = fn1()
+      console.log(a);
+    }
+    fn2();
+
+    // 5. 用户输入年份 输出当前年份2月份的天数
+    if (false) {
+
+      var year = prompt('请输入当前年份');
+      getDay(year);
+
+      function getDay(year) {
+        if (getYear(year)) {
+          alert('当前年份是闰年2月份有29天');
+        } else {
+          alert('当前年份是平年2月份有28天');
+        }
+      }
+    }
+
+
+    console.log(getReverse([1, 2, 3, 4, 5, 6, 8]));
+    console.log(getReverse([1, 23, 31, 14, 5, 6, 8]));
+    console.log(getReverse(['pink', 'red', 'blue', 'yellow']));
+
+    console.log(getSort([22, 21, 11, 222, 11, 2, 23, 4, 5, 10]));
+
+    console.log(getYear(2020));
+    console.log(getYear(2019));
+    console.log(getYear(2018));
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

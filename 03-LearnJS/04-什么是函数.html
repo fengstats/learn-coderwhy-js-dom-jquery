@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04-什么是函数</title>
+  <script>
+    // 1. 函数：言简意赅就是封装了一段可以被重复执行调用的代码块 如下：
+    // 求num1到num2之前数的累加和
+    // a. 声明函数 function 函数名(形参1, 形参2......) {执行语句}
+    function getSum(num1, num2) {
+      var sum = 0;
+      for (var i = num1; i <= num2; i++) {
+        sum += i;
+      }
+      console.log(sum);
+    }
+
+    // b. 调用函数 函数名(实参1, 实参2......);
+    getSum(1, 100);
+
+
+    // 2. 如果实参的个数多余形参的个数: 取形参的个数
+    getSum(50, 100, 100);
+
+    // 3. 如果实参的个数小于形参的个数：形参可以看做是不用声明的变量，num2是一个变量但是却没有接受值，那结果就是num2为undefined
+    getSum(10);
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

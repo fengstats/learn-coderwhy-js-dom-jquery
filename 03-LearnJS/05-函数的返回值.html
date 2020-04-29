@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05-函数的返回值</title>
+  <script>
+    // 设置函数返回值
+    function getResult() {
+      return '我是返回值'
+    }
+
+    // 接受函数返回值
+    var result = getResult()
+    // 输出函数返回值
+    console.log(result);
+
+    // 1. 使用三元表达式求两个任意数的最大值
+    function getMax(num1, num2) {
+      return num1 > num2 ? num1 : num2;
+    }
+
+    // 2. return只能够返回一个值
+    function getReturn(num1, num2) {
+      return num1, num2;
+    }
+
+    // 3. 如果函数没有return或者return空返回undefined
+    function getReturn2() {
+      return;
+    }
+
+    var max = getMax(111, 222);
+    console.log(max);
+
+    console.log(getReturn(1, 2)); // 返回2，默认返回最后一个
+
+    console.log(getReturn());
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

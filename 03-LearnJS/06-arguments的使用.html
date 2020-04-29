@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06-arguments的使用</title>
+  <script>
+    // arguments: 用于在函数中获取外界传递的参数，本身是一个伪数组将用户实参存储在其中
+    // 1. 具备数组的length属性
+    // 2. 按照索引的方式进行数据存储
+    // 3. 没有真实数组的pop() push() 方法
+
+    // 使用：
+    function fn() {
+      console.log(arguments);
+      console.log(arguments.length);
+      // 获取用户传递的第一个元素
+      // console.log(arguments[0]);
+
+      // 我们可以按照数组的遍历方式进行取值
+      for (var i = 0; i < arguments.length; i++) {
+        console.log(arguments[i]);
+      }
+    }
+
+    // 随意传参
+    fn(1, 2, 3, 4, 51, 1);
+
+
+    // 2. 利用函数求任意个数的最大值
+    function getMax() {
+      var max = arguments[0];
+      for (var i = 1; i < arguments.length; i++) {
+        if (max < arguments[i]) {
+          max = arguments[i];
+        }
+      }
+      // 返回最大值
+      return '最大值:' + max;
+    }
+
+    // 个数不确定
+    console.log(getMax(1, 2, 3, 4, 111, 23));
+    console.log(getMax(3, 4, 1121, 23));
+    console.log(getMax(2, 1, 23));
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
