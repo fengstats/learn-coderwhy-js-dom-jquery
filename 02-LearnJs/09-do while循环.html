@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>09-do while循环</title>
+  <script>
+    // 1. do while循环语法结构
+    // 执行思路：跟while不同之处在于，do while会先执行一遍循环体，再去判断执行条件，如果为真继续执行，否则退出
+    // 也就是无论如何do while都会执行后一次程序
+    if (false) {
+      var num = 0
+      do {
+        alert('我进来了 num:' + num)
+      } while (num != 0)
+    }
+
+    // 2. 输出次数
+    if (false) {
+      var num = 1;
+      do {
+        console.log(num);
+        num++;
+      } while (num <= 100)
+    }
+
+    // 3. 我爱你
+    if (true) {
+      var message;
+      // 这里使用do while会比 while少一句代码
+      do {
+        message = prompt('你爱我吗?');
+      } while (message !== '我爱你')
+      alert('okok')
+    }
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

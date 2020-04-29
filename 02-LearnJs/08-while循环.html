@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08-while循环</title>
+  <script>
+    // 1. while 循环语法结构 while 
+    //  当条件表达式结果为true的时候执行循环体 否则退出循环
+    if (false) {
+      var num = 1;
+      while (num <= 100) {
+        console.log("好嗨哟" + num);
+        num++;
+      }
+    }
+
+    // 2. 弹出输入框，要求用户输入，如果输入 我爱你 退出，否则一致提示
+    if (true) {
+      var message = prompt('你爱我吗?');
+      while (message !== '我爱你') {
+        message = prompt('你爱我吗?')
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
