@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04-变量的数据类型</title>
+  <script>
+    // 简单数据类型：Number Boolean String Undefined Null
+    // 复杂数据类型：Object
+    // 1. js的变量数据类型是只有在程序运行过程中，根据值来确定的
+    var num;
+    num = 0;
+
+    // 2. js是动态语言，变量的数据类型是可以变化的
+    num = '你好'
+
+    // 3. 八进制 0~7 在值前面加上0 表示八进制 （满8进1）
+    var num = 010;
+
+    // 4. 十六进制 0~9 a~f 前面需要加上0x (满16进1)
+    var num2 = 0x9;   // 9
+    num2 = 0xa;   // 10
+    num2 = 0xf;   // 15
+
+    // 5. 数字型的最小值与最大值
+    console.log(Number.MAX_VALUE);
+    console.log(Number.MIN_VALUE);
+
+    // 6. 无穷大与无穷小
+    console.log(Number.MAX_VALUE * 2);  // 无穷大 Infinity
+    console.log(-Number.MIN_VALUE * 2); // 无穷小 -Infinity
+
+    // 7. 非数字
+    console.log('pink' - 100);    // NaN
+
+    // 8. isNaN: 判断是否是为非数字 是返回false 不是返回true
+    console.log(isNaN(1))
+
+
+    // 9. Boolean 布尔类型 true or false
+    console.log(true + 1);    // 2 : true在参与运算时当成1来看
+    console.log(false + 1);   // 1 : false在参与运算时当成0来看
+
+    // 10. undefined 未初始化的值
+    console.log(undefined + 1); // NaN
+
+    // 11. null 空值
+    console.log(null + 1);  // 1
+
+
+    console.log(typeof (num))
+
+    // 010的八进制转换为10进制就是8
+    console.log(num);
+    console.log(num2);
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

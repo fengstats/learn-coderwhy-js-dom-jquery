@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03-交换两个变量的值</title>
+  <script>
+    // js 是一门编程语言 有很强的的逻辑性 也就是我们结题的思路
+    // 需求：左手有一个青苹果，右手有一个红苹果，现在我想将两个苹果交换，怎么办呢？
+    // 思路：找一个桌子，将左手的青苹果放下，这时将右手的红苹果放到左手中，最后用右手拿起青苹果，这就完成了交换，编程也是如此，需要第三个临时变量暂时存储
+    var a = 'a'
+    var b = 'b'
+    var tmp;
+    tmp = a;
+    a = b;
+    b = tmp;
+
+    console.log('a的值:', a)
+    console.log('b的值:', b);
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

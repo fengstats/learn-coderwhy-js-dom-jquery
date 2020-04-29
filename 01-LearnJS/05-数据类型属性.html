@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05-数据类型属性</title>
+  <script>
+    // 1. 检测字符串长度
+    var str = 'hello';
+    var num = 11;
+    var timer = null;
+    console.log(str.length);
+
+    
+    // 2. 字符串拼接 （数值相加，字符相连）
+    console.log('沙漠' + '骆驼');
+    // 只要有字符串类型与其它类型相拼接 最终的结果就是字符串类型
+    console.log('pink' + 18);
+
+
+    // 3. typeof() 获取数据类型
+    console.log(typeof str);
+    console.log(typeof num);
+    console.log(typeof (timer)); // object对象
+
+
+    // 4. 将数值型转换成字符串类型
+    var num2 = 10;
+    var num3 = 11;
+    var num4 = 12;
+    // toString()
+    console.log(num2.toString())
+    // String
+    console.log(String(num3));
+    // 字符串拼接方法
+    console.log(num4 + '');
+
+
+    // 5. 将字符串性转换成数值型
+    var str1 = '18.8'
+    // parseInt() 返回一个整数
+    console.log(parseInt(str1));        // 18 取整
+    console.log(parseInt('120px'));     // 120 自动将px去除
+    console.log(parseInt('rem120px'));  // NaN 无法进行转换
+    // parseFloat() 保留小数
+    console.log(parseFloat('3.14'));
+    // Number() 可以返回整数或者小伙
+    console.log(Number('111'));     // 111
+    console.log(Number('111.111')); // 111.111
+    console.log(Number('111px'));  // 无法自动去除px
+    // 利用算术运算 - * / (隐式转换)
+    // 字符串中必须是数字类型
+    console.log('12' - 1);      // 11
+    console.log('123' - '12');  // 111
+    console.log('123' * 1);     // 123
+
+
+    // 6. 将数据类型转换成布尔类型
+    console.log(Boolean('你好')); // true
+    console.log(Boolean(1));      // true
+    console.log(Boolean(null));   // false
+    console.log(Boolean(NaN));    // false
+    console.log(Boolean(undefined)); // false
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

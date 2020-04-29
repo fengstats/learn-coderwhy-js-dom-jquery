@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06-数据类型转换小案例</title>
+  <script>
+    var year = prompt('你的出生日期?');
+    var num1 = prompt('计算的第一个值');
+    var num2 = prompt('计算的第二个值');
+
+    // 数值型会有隐式转换
+    var age = 2020 - year;
+
+    // 字符串型相加不会转换 需要转换
+    var result = parseFloat(num1) + parseFloat(num2)
+
+    alert('你今年' + age + '岁')
+    alert('计算的值为' + result)
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

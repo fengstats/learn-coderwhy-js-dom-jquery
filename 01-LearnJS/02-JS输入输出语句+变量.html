@@ -7,13 +7,27 @@
   <title>02-JS输入输出语句</title>
   <script>
     // 1. 输入框
-    prompt('请输入您的年龄')
+    // var age: 声明一个age变量
+    var age;
+    // 赋值
+    age = prompt('请输入您的年龄')
 
     // 2. 弹出警示框 展示给用户的
-    alert('计算的结果是')
+    // 使用
+    alert('计算的结果是: ' + age)
 
     // 3. 控制台输出 
-    console.log('你在控制台看见我了吗')
+    console.log('你在控制台看见我了吗', age)
+
+    // 4. 同时声明多个变量
+    var myName = 'chen',
+      address = '火影村',
+      age = 108;
+
+    // 5. 输出显示
+    console.log('我叫', myName, '家住', address, '今年', age, name);
+
+    // name: 尽量不要直接使用name作为变量名，因为在部分浏览器name可能又特殊含义
   </script>
 </head>
 
