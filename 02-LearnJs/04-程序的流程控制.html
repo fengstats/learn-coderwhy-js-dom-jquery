@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04-程序的流程控制</title>
+  <script>
+    // 1. 顺序流程控制 ： 代码顺序从上而下执行
+    // a -> b 必须先执行a才能执行b
+
+    // 2. 分支流程控制
+    // if (条件表达式) {} 如果条件为真执行花括号内执行语句 否则不执行
+    if (false) {
+      var age = prompt('你的年龄')
+      if (age >= 18) {
+        alert('偷耳机')
+      } else {
+        alert('回家种地')
+      }
+    }
+
+    // a. 闰年：能够被4整除且不能整除100的为闰年(如2004就是闰年，1901就不是闰年)，或者能够被400整除的就是闰年
+    if (false) {
+      var year = prompt('请输入年份')
+      if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+        alert(year + '年是闰年')
+      } else {
+        alert(year + '年是平年')
+      }
+    }
+
+    // b. if else if 注意if只会执行一次 
+    // if 满足 直接执行if 后退出整个if
+    // else if 也是
+    // else 如果所有if else if都不满足 执行else
+    // c. 多分支多选一
+    if (false) {
+      if (false) {
+        // false不执行
+      } else if (true) {
+        // 执行此else if 退出整个if程序 后续不执行
+      } else if (false) {
+
+      } else if (true) {
+
+      } else {
+
+      }
+    }
+
+    // d. 分数判断 小案例
+    // 从大到小过滤
+    if (false) {
+      var score = prompt('你考了多少分呀？')
+      if (score >= 90) {
+        alert('6666')
+      } else if (score >= 80) {
+        alert('不错了')
+      } else if (score >= 70) {
+        alert('还行呀')
+      } else if (score >= 60) {
+        alert('你很危险')
+      } else {
+        alert('就这?')
+      }
+
+    }
+
+    // e. 三元表达式
+    // 条件表达式 ? 表达式1 : 表达式2;
+    // 思路：先看条件表达式的结果 为真执行表达式1 否则执行表达式2(只会选择一个哦)
+    if (false) {
+      var num = 5;
+      var result = num > 5 ? '是的' : '不是的';
+      console.log(result)
+    }
+
+    // f. 数字补0小案例
+    // 思路：如果小于10，例如1，2就在前面补0,01,02，大于10则不处理
+    if (false) {
+      var num = prompt('请输入数字');
+      alert(num > 10 ? num : '0' + num);
+    }
+
+    // switch 语句也是多分支语句 也可以实现多选一
+    // 语法结构： switch 转换、开关 case 小例子或者选项的意思
+    // 根据switch表达式返回的值与 case 后面的值匹配
+    if (false) {
+      // 针对变量设置一系列固定的值 使用switch会比if执行效率更高
+      // num 与 case 后面的值必须要是全等的
+      var num = 2;
+      switch (num) {
+        case 1:
+          alert(1);
+          // 如果当前的case没有break，则不会退出swithc，而是往下执行，直到遇到break为止
+          break;
+        case 2:
+          alert(2);
+          break;
+        default:
+          alert('没有匹配项')
+          break;
+      }
+    }
+
+    // g. switch查询水果案例
+    if (false) {
+      var fruit = prompt('请您输入查询的水果: ');
+      switch (fruit) {
+        case '苹果':
+          alert('苹果的价格是3.5/斤');
+          break;
+        case '榴莲':
+          alert('榴莲的价格是10.5/斤');
+          break;
+        case '香梨':
+          alert('香梨的价格是6.5/斤');
+          break;
+        default:
+          alert('没有这种水果');
+          break;
+      }
+    }
+
+    // h. 判断时间段
+    if (true) {
+      var timer = prompt('请输入现在的时间');
+      if (timer <= 10) {
+        alert('早上好')
+      } else if (timer <= 12) {
+        alert('中午好')
+      } else if (timer <= 18) {
+        alert('傍晚好')
+      } else if (timer <= 24) {
+        alert('深夜好')
+      } else {
+        alert('好nm')
+      }
+    }
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
