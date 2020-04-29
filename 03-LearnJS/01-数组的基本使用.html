@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-数组的基本使用</title>
+  <script>
+    // 1. 数组就是一组数据的集合 存储在单个变量下的优雅方式
+    // a. 利用new穿件数组
+    var arrs = new Array();
+    arrs = [1, 2, 3, 4];
+
+    // b. 使用字面量创建数组 []
+    var arrs2 = [];
+    arrs2 = [1, 2, 34, 'pink', true];
+
+    console.log(arrs);
+    console.log(arrs2);
+    // 单个数组获取
+    console.log(arrs[1]);
+
+    // 2. 遍历数组，就是把数组的元素从头到尾访问一次
+    for (var i = 0; i < arrs2.length; i++) {
+      console.log('当前第' + i + '个: ' + arrs2[i])
+    }
+
+    // 3. 一个数组内存储的全是数字类型，现在要求求出数组内的最大值
+    // 思路: 将数组的第一个元素作为临时最大值存储，依次和数组内的其它值进行比较，如果遇到比它大的值，将值拿过来存储，当遍历完后，自然存储的就是数组中的最大值了
+    var arrs3 = [77, 23, 44, 5, 6, 7, 33, 12, 1, 2];
+    var max = arrs3[0];
+    for (var i = 1; i < arrs3.length; i++) {
+      if (max < arrs3[i]) {
+        max = arrs3[i];
+      }
+    }
+
+    console.log('数组最大值为: ' + max);
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

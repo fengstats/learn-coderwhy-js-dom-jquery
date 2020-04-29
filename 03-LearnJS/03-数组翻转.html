@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03-数组翻转</title>
+  <script>
+    var arr1 = [1, 2, 3, 4, 5];
+    var newarr = [];
+    for (var i = arr1.length - 1; i >= 0; i--) {
+      console.log(arr1[i])
+      newarr[newarr.length] = arr1[i];
+    }
+
+    console.log(newarr);
+
+    // 1. 排列：TODO: 存在问题
+    // 从大到小 - 找到比它小的交换
+    // 从小到大 - 找到比它大的交换
+    // 我的思路: 双重循环，将数组中第一个元素选出来跟数组中所有元素进行比较，如果遇到一个比它小(大)的值跟它交换位置比较完后，换成第二个元素进行，直至没有需要在交换的元素为止，排序完成
+    if (true) {
+      console.log('\n\n我的：');
+      var arr2 = [1, 2, 33, 22, 12, 1, 33, 16, 54];
+      var tmp = 0;
+      var count = 0;
+      for (var i = 0; i < arr2.length; i++) {
+        for (var j = 0; j < arr2.length - 1; j++) {
+          if (arr2[i] > arr2[j]) {
+            count++;
+            tmp = arr2[i];
+            arr2[i] = arr2[j];
+            arr2[j] = tmp;
+            console.log(count, arr2);
+          }
+        }
+      }
+      console.log(arr2);
+    }
+
+    // 2. 正常冒泡排序
+    console.log('\n\n冒泡：');
+    var arr3 = [1, 2, 33, 22, 12, 1, 33, 16, 54];
+    var tmp = 0;
+    var count1 = 0;
+    for (var i = 0; i < arr3.length; i++) {
+      for (var j = 0; j < arr3.length - i; j++) {
+        // 内部元素交换2个变量的值 前面一个与后面一个数组元素进行比较
+        if (arr3[j] < arr3[j + 1]) {
+          count1++;
+          tmp = arr3[j];
+          arr3[j] = arr3[j + 1];
+          arr3[j + 1] = tmp;
+          console.log(count1, arr3);
+        }
+      }
+    }
+    console.log(arr3);
+
+    console.log('我的排列交换次数：', count);
+    console.log('冒泡排列交换次数：', count1);
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

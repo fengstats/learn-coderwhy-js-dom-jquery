@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02-数组新增元素</title>
+  <script>
+    // 1. 通过修改length长度新增
+    var arr1 = ['red', 'green', 'blue'];
+    console.log(arr1.length);
+    arr1.length = 5;
+    // 数组确实新增了，但是数据是空的
+    console.log(arr1);
+
+    // 2. 修改索引号
+    var arr2 = ['red', 'green', 'blue'];
+    arr2[3] = 'pink';
+    console.log(arr2);
+    // 之前没有的索引号就是新增
+    arr2[4] = 'hotpink';
+    console.log(arr2);
+    // 如果修改已有的索引号就会覆盖之前的数据
+    arr2[0] = 'yellow';
+    console.log(arr2);
+
+    // 不要直接给数组名赋值 否则将会直接替换之前的所有数据
+    arr2 = '你好';
+    console.log(arr2);
+
+    // 3. 使用循环新增数组: 从0到99
+    var arr3 = [];
+    for (var i = 0; i < 100; i++) {
+      arr3[i] = i;
+    }
+    console.log(arr3);
+
+    // 4. 将一个数组中可以整除4的元素选出来存储到一个新数组中
+    var newArr = [];
+    var j = 0;
+    for (var i = 0; i < arr3.length; i++) {
+      if (arr3[i] % 4 == 0) {
+        // 1. 使用外部变量控制数组新增
+        // newArr[j] = arr3[i];
+        // j++;
+
+        // 2. 直接使用数组长度
+        // newArr[newArr.length] = arr3[i];
+
+        // 3. 使用push: 每次往数组后面追加一位元素
+        newArr.push(arr3[i]);
+      }
+    }
+
+    console.log(newArr);
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
