@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04-预解析</title>
+  <script>
+    // 1问 
+    // console.log(num); // not defined
+
+    // 2问
+    console.log(num);   // undefined 坑1
+    // num 相当于将 var num;声明提升到了当前作用域的最前面，但是不会提升赋值，所以结果为undefined
+    var num = 100;
+
+    // 3问
+    fn();               // 函数可以正常调用
+    function fn() {
+      console.log(111);
+    }
+    // 函数声明可以提升到最前面，所以可以正常调用
+
+
+    // 4问
+    // fun();              // fun() not a function 未定义 坑2
+    var fun = function () {
+      console.log(222);
+    }
+    // 相当于执行以下代码: 声明变量后直接进行函数表达式调用，这是函数表达式还未被创建，所以报错
+    // 函数表达式调用必须写在函数的后面
+    // var fun;
+    // fun();
+    // fun = function () {
+    //   ...
+    // }
+
+    // 1. 我们js引擎运行js 分为两步：预解析 代码执行
+    // a. 预解析 js引擎会把js里面所有的var 还有 function 提升到当前作用域的最前面
+    // b. 代码执行 按照代码书写从上往下执行
+    // 2. 预解析分为 变量预解析（变量提升）和 函数预解析（函数提升）
+    // a. 变量提升 就是把所有的变量声明提升到当前作用域最前面，不提升赋值操作
+    // b. 函数提升 就是把所有的函数声明提升到当前作用域最前面，但是不调用函数
+
+
+    // 案例1：结果是几?
+    var num = 10;
+    fun2();
+    function fun2() {
+      console.log(num);
+      var num = 20;
+    }
+    // 解析过程如下
+    if (false) {
+      // 变量与函数提升
+      var num;
+      function fun2() {
+        // 执行后发现函数还有变量提升
+        var num;
+        // 最近原则 离它最近的num就是定义但是并未赋值的num
+        console.log(num); // undefined
+        num = 20;
+      }
+      // 赋值
+      num = 10;
+      // 代码执行
+      fun2();
+    }
+
+
+    // 案例2：结果是几？
+    f1();
+    console.log(c);
+    console.log(b);
+    console.log(a);
+    function f1() {
+      var a = b = c = 1;
+      console.log(a);
+      console.log(b);
+      console.log(c);
+    }
+    // 解析过程如下
+    if (false) {
+      // 提升函数
+      function f1() {
+        // 函数调用 提升变量
+        // var a = b = c = 1; 相当于 var a = 1; b = 1; c =1;
+        // 提升变量
+        var a;
+        // 在函数中没有定义就是使用的变量当成 全局变量 来看 所以 b c 是全局变量
+        a = b = c = 1;
+        console.log(a); // 1
+        console.log(b); // 1
+        console.log(c); // 1
+      }
+      f1();
+      // 因为b c是全局变量 在函数内部进行了赋值 值会保留
+      console.log(c); // 1
+      console.log(b); // 1
+      console.log(a); // 会报错 在全局当中找不到任何a的定义
+    }
+
+
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
