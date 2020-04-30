@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10-Math数学对象</title>
+  <script>
+    // 1. Math.radom() 返回一个随机小数 [0, 1) 左闭右开 可以取得0，但是取不到1 0 <= x < 1
+    // 方法内不跟参数，代码验证
+    console.log(Math.random());
+
+    // 2. 我们想要得到两个数之间的随机整数，并且可以包含2这两个整数
+    // Math.floor(Math.random() * (max - min + 1)) + min;
+    function getRandom(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+    console.log(getRandom(1, 10));
+
+    // 3. 随机点名
+    var arr = ['张三', '小陈', '小风', '李四', '消沉', 'pink'];
+    console.log(arr[getRandom(0, arr.length - 1)]);
+
+    // 4. 猜数字
+    if (false) {
+      var random = getRandom(1, 10)
+      do {
+        var num = prompt('请输入你猜测的数字[1~10]');
+        if (num > random) {
+          alert('你猜大了');
+        } else if (num < random) {
+          alert('你猜小了');
+        } else {
+          alert('ok 牛皮');
+          break;
+        }
+      } while (true) // 死循环
+    }
+
+    // 5. 猜数字严谨版 1~50中随机一个 只有十次机会
+    if (false) {
+      var random = getRandom(1, 50);
+      var count = 10;
+      do {
+        count--;
+        var num = prompt('请输入你猜测的数字[1~50]');
+        if (num > random) {
+          alert('你猜大了 加油呀，还剩下' + count + '次机会');
+        } else if (num < random) {
+          alert('你猜小了 加油呀，还剩下' + count + '次机会');
+        } else {
+          alert('ok 牛皮');
+          break;
+        }
+      } while (count > 0)
+      if (count != 0) {
+        alert('小伙子不错');
+      } else {
+        alert('就这~');
+      }
+    }
+    if (false) {
+      var random = getRandom(1, 50);
+      for (var i = 9; i >= 0; i--) {
+        var num = prompt('请输入你猜测的数字[1~50]');
+        if (num > random) {
+          alert('你猜大了 加油呀，还剩下' + i + '次机会');
+        } else if (num < random) {
+          alert('你猜小了 加油呀，还剩下' + i + '次机会');
+        } else {
+          alert('ok 牛皮');
+          break;
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

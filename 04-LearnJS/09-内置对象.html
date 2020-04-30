@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>09-内置对象</title>
+  <script>
+    // 内置对象是JS中已经给我们写好的可以直接拿来使用的对象
+    // Math: 数学对象，不是一个构造函数，所以我们不需要new来调用 而是直接使用里面调用的属性和方法即可
+    console.log(Math.PI);   // 属性，圆周率
+    // 方法：最大值
+    console.log(Math.max(1, 2, 99)); // 99
+    console.log(Math.max(-1, -10));  // -1
+    console.log(Math.max(1, 0, 'pink')); // NaN
+    console.log(Math.max()); // -Infinity: 负的无穷小
+
+    // 绝对值
+    console.log(Math.abs(-1));   // 1
+    console.log(Math.abs('-1')); // 1: 隐式转换
+    console.log(Math.abs('pink')); // NaN: 无法转换 not a number 不是一个数字
+
+    // 三个取整的方法
+    // (1) Math.floor() 地板 向下取整 往最小了取值
+    console.log(Math.floor(1.1)); // 1
+    console.log(Math.floor(1.9)); // 1
+
+    // (2) Math.ceil() 天花板 向上取整 往大了取值
+    console.log(Math.ceil(1.1)); // 2
+    console.log(Math.ceil(1.9)); // 2
+
+    // (2) Math.round() 四舍五入 
+    // 其它数字都是四舍五入 但是 .5特殊 往大了取
+    // 1.5 1 ~ 2之前取2      -1.5 -1 ~ -2之前取-1
+    console.log(Math.round(1.1)); // 1
+    console.log(Math.round(1.5)); // 2
+    console.log(Math.round(-1.5)); // -1
+
+
+
+    // 1. 利用对象封装自己的数学对象 里面有PI、最大值、最小值
+    var myMath = {
+      PI: 3.141592653589793,
+      max: function () {
+        var max = arguments[0];
+        for (var i = 1; i < arguments.length; i++) {
+          if (max < arguments[i]) {
+            max = arguments[i]
+          }
+        }
+        return max;
+      },
+      min: function () {
+        var min = arguments[0];
+        for (var i = 1; i < arguments.length; i++) {
+          if (min > arguments[i]) {
+            min = arguments[i]
+          }
+        }
+        return min;
+      }
+    }
+
+    console.log('我的：');
+    console.log(myMath.PI);
+    console.log(myMath.max(1, 2, 3, 44, 11));
+    console.log(myMath.min(1, 2, 3, 44, 11));
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
