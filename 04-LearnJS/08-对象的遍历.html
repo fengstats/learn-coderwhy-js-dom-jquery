@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08-对象的遍历</title>
+
+  <script>
+    // 遍历对象
+    var obj = {
+      uname: 'pink',
+      age: 19,
+      sex: '男',
+      // 方法也可以进行遍历
+      fn: function () {
+
+      }
+    }
+    // console.log(obj.uname);
+    // console.log(obj.age);
+    // console.log(obj.sex);
+
+
+    // 1. 如果对象中只要三个属性的话，手动输出还可以接收，那如果有100个 1000个呢? 还手写吗？
+    // 这时，我们就需要用到我们的 for...in 了，针对对象属性进行遍历
+    // for (变量 in 对象) {}
+    for (var key in obj) {
+      // console.log(key);   // key: 对象属性名
+      // 输出属性值
+      console.log(key + ' ' + obj[key]);
+    }
+  </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

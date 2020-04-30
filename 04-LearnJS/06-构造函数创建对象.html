@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06-构造函数创建对象</title>
+  <script>
+    // 我们为什么需要使用构造函数
+    // 就是因为我们前面两种创建对象的方式，一次只能够创建一个对象
+    var ldh = {
+      uname: '刘德华',
+      age: 28,
+      sing: function () {
+        console.log('ok');
+      }
+    }
+    var zxy = {
+      uname: '张学友',
+      age: 68,
+      sing: function () {
+        console.log('李香兰');
+      }
+    }
+    // 因为我们一次创建一个对象。里面很多属性与方法是大量相同的 只能够赋值
+    // 因此我们可以利用函数的方式 重复这些相同的代码 我们将这个函数称为 '构造函数'
+    // 又因为这个函数不一样，里面封装的不是普通代码，而是 对象
+    // 构造函数就是把我们对象里面一些相同的属性与方法抽象出来封装到函数里面
+
+
+    // 1. 利用构造函数创建对象
+    // 我们需要创建四大天王的对象 相同的属性有：名字 年龄 性别  相同的方法：唱歌
+    // 构造函数的语法格式
+    // a. 创建
+    // function 构造函数名() {
+    //   this.属性 = 值;
+    //   this.方法 = function () { }
+    // }
+    // b. 调用
+    // new 构造函数();
+
+    // 2. 构造函数名字首字母要大写
+    function Star(uname, age, gender) {
+      this.uname = uname;
+      this.age = age;
+      this.gender = gender;
+    }
+    // 使后面
+    var ldh = new Star('刘德华', 19, '男')
+    // 构造函数不需要return就可以返回结构
+    console.log(typeof ldh);
+    console.log(ldh.uname);
+
+    var zxy = new Star('张学友', 29, '男')
+    console.log(zxy.uname);
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

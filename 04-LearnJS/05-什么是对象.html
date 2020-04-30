@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05-什么是对象</title>
+  <script>
+    // 对象：万物皆对象
+    // 在JS中，对象是一组无序的相关属性和方法的集合，所有的事物都是对象，例如字符串、数值、数组、函数等
+    // 1. 对象是由属性和方法组成的
+    // 属性：事物的特征，在对象中用属性来表示（常用名词）
+
+    // 2. 利用对象字面量创建对象 {}
+    // var obj = {}; // 创建了一个空的对象
+    // a. 里面的属性或者方法我们采取键值对的形式 键(属性名): 值（属性值）
+    // b. 多个属性或者方法中间使用逗号隔开
+    // c. 方法冒号后面跟的是一个匿名函数
+    var obj = {
+      uname: '小陈',
+      age: 18,
+      sex: '男',
+      sayHi: function () {
+        console.log('hi~');
+      }
+    }
+
+    // 5. 使用 new Object 创建对象
+    var obj2 = new Object();
+    obj.uname = '张三废';
+    obj.age = 111;
+    obj.sayHi = function () {
+      console.log('hi~');
+    }
+    // 调用方式与字面量的方式一致
+
+
+    // 3. 使用对象
+    // a. 调用对象的属性 我们采取 对象名.属性名 中间的'.'我们可以理解为的
+    console.log(obj.uname);
+
+    // b. 调用对象属性 也可以使用对象名['属性名'] []中的''不可省略哦
+    console.log(obj['age']);
+
+    // c. 方法调用 对象名.方法名() 因为是方法所以括号不可省略
+    console.log(obj.sayHi());
+
+    // 4. 函数与方法
+    // 相同点：都是为了实现某种功能或者做某件事
+    // 不同：
+    // 函数是单独声明并且调用 函数名() 单独存在的
+    // 方法 在对象内 调用的时候 对象名.方法()
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
