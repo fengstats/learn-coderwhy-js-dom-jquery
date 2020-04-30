@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>15-获取数组元素索引</title>
+  <script>
+    // 1. 返回数组元素索引 数组名.indexOf('元素值'); 从前往后找
+    var arr = ['blue', 'pink', 'red', 1, 'blue'];
+    // a. indexOf只会返回第一次找到的元素
+    console.log(arr.indexOf('blue')); // 0
+    // b. 如果找不到会返回-1
+    console.log(arr.indexOf('test')); // -1
+    
+    // 2. lastIndexOf('元素值') 从后往前开始找 找到了返回元素索引 找不到返回-1
+    console.log(arr.lastIndexOf('blue')); // 4
+    
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

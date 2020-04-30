@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>14-筛选数组</title>
+  <script>
+    // 1. 有一个包含工资的数组[1500, 2100, 2000, 18000, 1000]，要求吧数组中工资超过2000的删除，剩余的放到新数组中
+    if (true) {
+      var arr = [1500, 2100, 2000, 18000, 1000];
+      var newArr = [];
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i] > 2000) {
+          // newArr[newArr.length] = arr[i];
+          newArr.push(arr[i]);
+        }
+      }
+
+      console.log('原数组', arr);
+      console.log('新数组', newArr);
+
+    }
+
+    // 2. 数组排序 翻转 reverse()
+    var arr = ['pink', 'red', 'blue'];
+    arr.reverse();
+    console.log(arr);
+
+    // 3. 数组排序 （冒泡排序）
+    var arr1 = [9, 12, 5, 6, 1];
+    arr1.sort();  // 排序会有bug
+    console.log(arr1);
+
+    // 给sort方法传递一个函数控制升序还是降序
+    arr1.sort(function (a, b) {
+      return a - b; // 升序
+    })
+    console.log(arr1);
+
+    arr1.sort(function (a, b) {
+      return b - a; // 降序
+    })
+    console.log(arr1);
+
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

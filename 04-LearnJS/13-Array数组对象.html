@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>13-Array数组对象</title>
+  <script>
+    // 1. new Array()
+    // a. 单写一个值 表示创建了一个空的数组，只是数组的长度为2
+    var arr = new Array(2);
+    console.log(arr);
+
+    // b. 写两个值 表示创建一个包含这两个值得数组
+    var arr1 = new Array(2, 3);
+    console.log(arr1);
+
+
+    // 2. 翻转数组-升级版
+    // a. instanceof 运算符 他可以用来检测是否为数组 true and false
+    // console.log(判断变量 instanceof Array);
+    if (true) {
+      function getReverse(arr) {
+        if (arr instanceof Array) {
+          newArr = [];
+          for (var i = arr.length - 1; i >= 0; i--) {
+            newArr[newArr.length] = arr[i];
+          }
+          return newArr;
+        } else {
+          return '参数类型要求必须是一个数组 [1, 2, 3,...]';
+        }
+      }
+      console.log(getReverse([1, 2, 3, 4]));
+      console.log(getReverse(1, 2, 3, 4));
+    }
+    // b. (H5新增 IE9以上支持)Array.isArray(参数); 是返回true 不是返回false，优先级要高于instanceof
+    var myarr = [];
+    console.log(Array.isArray(myarr));
+    console.log(Array.isArray(Object));
+
+
+    // 3. 数组添加 push() 可以在数组后面追加新元素
+    // a. push会在我们数组的末尾添加一个或者多个数组元素 push 推
+    var myarr = [1, 2, 4, 5];
+    console.log("原数组：", myarr);
+    myarr.push(1, '我爱你', '你好');
+    // b. push完毕后原数组也会进行修改
+    console.log(myarr);
+    // c. push完毕后 返回的结果是新数组的长度
+    console.log(myarr.push(1)); // 8
+
+
+    // 4. 数组添加 unshift() 可以再数组后面追加新元素
+    // a. unshift会在我们数组的头部添加一个或者多个数组元素
+    var myarr = [1, 2, 4, 5];
+    myarr.unshift(1, '我爱你', '你好');
+    // b. unshift完毕后原数组也会进行修改
+    console.log(myarr);
+    // c. unshift完毕后 返回的结果是新数组的长度
+    console.log(myarr.unshift('chen')); // 8
+
+
+    // 5. 数组删除 pop() 可以删除数组末尾的最后一个元素(只能删除一个)
+    var myarr = [1, 2, 4, 5, 6];
+    // 返回值就是删除的元素
+    console.log("删除元素: " + myarr.pop());
+    console.log("剩余数组: ", myarr);
+
+    // 6. 数组删除 shift() 可以删除数组头部的第一个元素(正好与pop()相反)
+    console.log("删除元素: " + myarr.shift());
+    // 返回值就是删除的元素
+    console.log("剩余数组: ", myarr);
+
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
