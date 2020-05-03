@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>18.字符串类型深究</title>
+  <script>
+    // 1. 基本包装类型
+    var str = 'hello';
+    console.log(str.length);
+
+    // 对象才会有属性和方法（复杂数据类型）
+    // 简单数据类型str(字符)为什么会有lenght属性呢？
+    // 基本包装类型：就是把简单数据类型包装成为了复杂数据类型，这样基本数据类型就有了属性和方法
+    // a. 把简单数据类型包装为复杂数据类型执行过程
+    // (1) 把简单数据类型包装成复杂数据类型
+    var temp = new String('hello');
+    // (2) 把临时变量的值给str
+    str = temp;
+    // (3) 销毁这个临时变量
+    temp = null;
+
+
+    // 2. 字符串的不可变性
+    // 所有对字符串的操作都会返回一个新的字符串
+    var str = 'hello';
+    str = 'world';
+    // a. 上述步骤解析：
+    // (1) 开辟一块新空间存放hello
+    // (2) 将str指向这块空间
+    // (3) 开辟一块新空间存放world
+    // (4) 将str指向world
+    // 如上述，字符串hello其实并没有被销毁，还会存在内存中，只是更改了str的指向而已，只是你看着像变了而已
+    console.log(str);
+
+    // 3. 字符串对象,根据字符返回位置
+    // str.indexOf('需要查找的字符', [起始下标]);
+    // 如果存在两个返回第一个下标，不存在返回-1
+    var str = '改革春风吹满地，春天来了，冬天还远吗';
+    // a. 找到 '春' 的下标
+    console.log(str.indexOf('春')); // 2
+
+    // b. 从下标为3的字符开始查找（包括3），找到春的下标
+    console.log(str.indexOf('春', 3)); // 8
+
+    console.log(str.indexOf('你好')); // -1
+
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

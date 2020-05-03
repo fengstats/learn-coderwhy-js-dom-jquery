@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>19-查找某一个字符在字符串中出现次数</title>
+  <script>
+    // 核心算法：先查找第一个出现的元素，如果返回的不是-1，继续根据该元素返回的索引+1往后面查找，直到返回-1代表字符串中没有该字符了，程序结束
+    var str = 'xabccbdxxxindexpyhtons';
+    var searchElement = 'x';
+    var count = 0;
+    var index = str.indexOf(searchElement);
+    while (index !== -1) {
+      count++;
+      index = str.indexOf(searchElement, index + 1);
+    }
+
+    console.log(searchElement + '元素出现的次数是：', count);
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

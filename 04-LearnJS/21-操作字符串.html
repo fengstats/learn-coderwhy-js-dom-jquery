@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>21-操作字符串</title>
+  <script>
+    var name1 = 'chen';
+    var name2 = 'xiao';
+
+    // 1. concat('字符串1', '字符串2') 用于连接两个字符或多个字符的方法
+    console.log(name1.concat('shifeng', name2));
+
+    // 2.substr(start, length) 
+    // start: 开始截取的下标位置
+    // length: 截取的元素个数
+    var str1 = '改革春风吹满地';
+    // 从str1变量中的第二个下标开始，截取三个元素 '春风吹'
+    console.log(str1.substr(2, 3));
+
+    // 3. replace('被替换的字符', '替换后的字符')
+    // 注意点：只会被替换一次
+    var str2 = 'hello world';
+    console.log(str2.replace('hello', 'hi'));
+    // a. 有一个字符串 'abcabcabc'，现在需要将a全部替换成*
+    // 思路：使用while循环+indexOf() 查找字符串中所有a进行替换
+    str2 = 'abcacbabcabc';
+    while (str2.indexOf('a') != -1) {
+      str2 = str2.replace('a', '*');
+    }
+    console.log(str2);
+
+    // 4. 字符串转换成数组 split('分隔符')
+    // 返回值：返回一个新数组
+    // 需要注意的是和前面学习的join相反，join是讲数组转换成字符串
+    var str3 = 'red, pink, blue';
+    console.log(str3.split(','));
+
+    var str3 = 'red&pink&blue';
+    console.log(str3.split('&'));
+
+    
+    // 5. 字符大小写转换
+    // toUpperCase(): 将字符串中的小写字符转换成大写字符
+    // toLowerCase(): 将字符串中的
+    console.log('hello world'.toUpperCase());
+    console.log('HELLO WORLD'.toLowerCase());
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

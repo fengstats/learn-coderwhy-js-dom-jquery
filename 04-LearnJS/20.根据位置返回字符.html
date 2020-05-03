@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>20.根据位置返回字符</title>
+  <script>
+    // 根据位置返回字符
+    var str = 'hello world';
+    // 1. charAt(index) 返回下标为index的字符
+    // a. 在字符串中查找下标为1的字符，并返回
+    console.log(str.charAt(1));  // e
+    // b. 使用for...in...循环比那里数组
+    for (key in str) {
+      console.log(key, str.charAt(key));
+    }
+
+    // 2. charCodeAt(index) 返回相应索引号的字符ASCII值 目的：判断用户按下了哪个键
+    // A: 65  a: 97
+    // a: 97 b: 98 c: 99 ~ h: 104
+    // A: 65 B: 66 C:67 ......
+    console.log(str.charCodeAt(0)); // 104
+
+    // 3. str[index] 与数组方式一致（H5新增，IE老版本需要兼容）
+    for (key in str) {
+      console.log(key, str[key]);
+    }
+
+    // 4. 判断对象是否存在某个属性
+    var o = {
+      age: 10,
+      sex: 0
+
+    }
+    // 存在属性，但是值为0的时候会产生错误判断 不严谨
+    if (o['age']) {
+      console.log('内部存在age');
+    } else {
+      console.log('内部不存在age');
+    }
+
+    if (o['sex']) {
+      // 不严谨
+      console.log('你好');
+    }
+
+
+    // 5. 判断一个字符串中出现次数最多的字符，并统计其次数
+    str = 'aabbccabcefghljklllon'
+    var havastr = {}
+    for (key in str) {
+      // 每一个字符串的字符
+      var chars = str[key];
+      console.log(key, chars);
+
+      if (havastr[chars]) {
+        // 第二次查找时找到了+1
+        havastr[chars]++;
+      } else {
+        // 如果属性没有被创建过 赋值为1
+        havastr[chars] = 1;
+      }
+    }
+    // 遍历对象后
+    // 最大值存储
+    var char = '';
+    var max = 0;
+    for (var k in havastr) {
+      // k是对象中的属性名
+      // havastr[k]则是属性值
+      if (havastr[k] > max) {
+        char = k;
+        max = havastr[k];
+      }
+    }
+    console.log(havastr);
+    // 输出最大次数
+    console.log('最多的字符', char, '次数为', max);
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
