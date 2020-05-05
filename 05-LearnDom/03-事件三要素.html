@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03-事件三要素</title>
+</head>
+
+<body>
+  <div>我是一个小div</div>
+  <button id="btn">唐伯虎</button>
+  <script>
+    // 点击一个按钮，弹出对话框（我们也称为事件三要素）
+    // 1. 事件由三部分组成
+    // a. 事件源: 事件被触发的对象 谁?
+    var btn = document.getElementById('btn');
+
+    // b. 事件类型: 如何触发 什么事件 比如鼠标点击(onclick) 还是鼠标经过 还是键盘按下
+    // c. 事件处理程序: 通过一个函数赋值的方式，如
+    btn.onclick = function () {
+      alert('点秋香');
+    }
+
+
+    // 2. 执行事件步骤
+    // 点击div >> 控制台输出 >> 我被选中了
+    // a. 获取事件源
+    var div = document.querySelector('div');
+    // 2. 绑定事件 注册事件
+    // div.onclick
+    // 3. 添加事件处理程序
+    div.onclick = function () {
+      console.log('我被选中了');
+    }
+  </script>
+</body>
+
+</html>

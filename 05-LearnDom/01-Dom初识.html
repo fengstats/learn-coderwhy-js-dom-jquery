@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-Dom初识</title>
+  <script>
+
+  </script>
+</head>
+
+<body>
+
+  <div id="time">
+    我是小陈
+  </div>
+
+  <ul>
+    <li>知否知否，应是绿肥红瘦1</li>
+    <li>知否知否，应是绿肥红瘦2</li>
+    <li>知否知否，应是绿肥红瘦3</li>
+    <li>知否知否，应是绿肥红瘦4</li>
+    <li>知否知否，应是绿肥红瘦5</li>
+  </ul>
+
+  <ul>
+    <li>知否知否，应是绿肥红瘦1</li>
+    <li>知否知否，应是绿肥红瘦2</li>
+    <li>知否知否，应是绿肥红瘦3</li>
+    <li>知否知否，应是绿肥红瘦4</li>
+    <li>知否知否，应是绿肥红瘦5</li>
+  </ul>
+
+  <ul class="box">
+    <li>产品1</li>
+    <li>盒子</li>
+  </ul>
+  <script>
+    // 1. 因为我们文档页面是从上往下加载，所以先得有标签 所以我呢script写到标签下面
+    // 2. get 获取 element 元素 by 通过 驼峰命名法
+    // 3. 参数id时大小写敏感的字符串
+    // getElementById(''); 根据id获取对象元素
+    var timer = document.getElementById('time');
+    console.log(timer);
+    // 4. 返回的是一个对象
+    console.log(typeof timer);
+    // 5. console.dir 打印我们返回的元素对象 更好的查看里面的属性和方法
+    console.dir(timer);
+
+
+
+    // getElementsByTagName('标签名');
+    // 1. 返回的是一个伪数组
+    var lis = document.getElementsByTagName('li');
+    console.log(lis);
+    console.log(lis[0]);
+    for (var i in lis) {
+      console.log(lis[i]);
+    }
+
+
+    // getElementsByClassName('类名') 根据类名来选择某些元素的集合
+    var boxs = document.getElementsByClassName('box');
+    console.log(boxs[0]);
+  </script>
+
+</body>
+
+</html>

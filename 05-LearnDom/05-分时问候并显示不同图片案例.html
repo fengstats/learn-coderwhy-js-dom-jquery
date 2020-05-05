@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05-分时问候并显示不同图片案例</title>
+</head>
+
+<body>
+  <div>上午好</div>
+  <img src="images/s.gif" alt="" width="300">
+  <script>
+    // 根据不同事件来判断，所以需要使用到日期内置对象
+    // 利用多分支语句来设置不同的图片
+    // 需要一个图片，并且根据事件修改图片，就需要用到操作元素src属性
+    // 需要一个div元素，显示不同的问候语，需要一个img元素，显示不同的图片
+    // 1. 获取元素
+    var img = document.querySelector('img');
+    var div = document.querySelector('div');
+
+    // 2. 得到当前的小时数
+    // var date = new Date();
+    // var h = date.getHours();
+    var h = prompt('亲，请输入当前小时数(0-24)');
+
+    // 3. 判断小时数改变图片和文字信息
+    if (h < 12) {
+      img.src = 'images/s.gif';
+      div.innerHTML = '亲，上午好呀，要好好写代码哦';
+    } else if (h < 18) {
+      img.src = 'images/x.gif';
+      div.innerHTML = '亲，下午好呀，要好好写代码哦';
+    } else {
+      img.src = 'images/w.gif';
+      div.innerHTML = '亲，晚上好呀，要好好写代码哦';
+    } 
+  </script>
+</body>
+
+</html>

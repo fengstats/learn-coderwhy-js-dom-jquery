@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02-H5新增获取元素方式</title>
+</head>
+
+<body>
+  <div class="box">盒子1</div>
+  <div class="box">盒子2</div>
+
+  <div id="nav">
+    <ul>
+      <li>首页</li>
+      <li>产品</li>
+    </ul>
+  </div>
+
+  <script>
+    // 1. querySelector 返回指定选择器的第一个元素对象
+    // '.box' 类名为box的第一个标签
+    var firstBox = document.querySelector('.box');
+    console.log(firstBox);
+
+    // '#nav' id为nav的第一个标签
+    var nav = document.querySelector('#nav');
+    console.log(nav);
+
+    // 'li' 名为li的第一个标签
+    var li = document.querySelector('li');
+    console.log(li);
+
+    // 2. querySelectorAll() 返回指定选择器的所有元素的集合
+    var boxs = document.querySelectorAll('.box');
+    console.log(boxs);
+
+    // 3. 特殊元素 body 与 html(因为一般在一个页面中只会存在一个body与html标签)
+    var body = document.body;
+    console.log(body);
+
+    var html = document.documentElement;
+    console.log(html);
+
+  </script>
+</body>
+
+</html>

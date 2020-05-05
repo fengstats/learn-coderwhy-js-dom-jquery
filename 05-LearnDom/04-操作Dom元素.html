@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04-操作Dom元素</title>
+</head>
+
+<body>
+  <button>显示当前系统事件</button>
+  <div>来</div>
+  <div>某个时间</div>
+  <p>
+    我是文字
+    <span>123</span>
+  </p>
+
+  <button id="ldh">刘德华</button>
+  <button id="zxy">张学友</button><br>
+  <img src="images/ldh.jpg" alt="" width="300" title="刘德华">
+
+  <script>
+    // 当我们点击按钮 div内文字会发生变化
+    // 1. 获取元素
+    var btn = document.querySelector('button');
+    var div = document.querySelector('div');
+
+    // 2. 注册事件
+    btn.onclick = function () {
+      div.innerText = getTime();
+    }
+
+    // 当前系统时间
+    function getTime() {
+      var time = new Date();
+      var hour = time.getHours();
+      var minute = time.getMinutes();
+      var second = time.getSeconds();
+      // 使用逻辑中断进行补0
+      hour < 10 && (hour = '0' + hour);
+      minute < 10 && (minute = '0' + minute);
+      second < 10 && (second = '0' + second);
+      return hour + ': ' + minute + ': ' + second;
+    }
+
+    // 3. innerText 与 innerHTML的区别
+    // a. inderText 无法识别html标签 非标准
+    var div = document.querySelector('div');
+    div.innerText = '<strong>我再给文字加粗显示</strong>'
+
+    // b. inderrHTML 可以识别html标签 W3C标准
+    div.innerHTML = '<strong>我再给文字加粗显示</strong>'
+
+    // 4. 两个属性是可以读写的 可以获取元素里面的内容
+    var p = document.querySelector('p');
+    // innerText会去除html标签 同时空格与换行也会去掉
+    console.log(p.innerText);
+    // innerHTML不会去除html标签 同时保留空格和换行
+    console.log(p.innerHTML);
+
+    // 5. 修改元素属性src 
+    // a. 获取元素
+    var ldh = document.getElementById('ldh');
+    var zxy = document.getElementById('zxy');
+    var img = document.querySelector('img');
+    // b. 注册事件 处理程序
+    zxy.onclick = function () {
+      img.src = 'images/zxy.jpg';
+      img.title = '张学友';
+    }
+    ldh.onclick = function () {
+      img.src = 'images/ldh.jpg';
+      img.title = '刘德华';
+    }
+
+  </script>
+</body>
+
+</html>
