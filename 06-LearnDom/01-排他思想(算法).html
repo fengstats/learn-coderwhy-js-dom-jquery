@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-排他思想(算法)</title>
+  <style>
+    div {
+      margin: 100px auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+  </div>
+
+  <script>
+    // 1. 获取所有按钮元素
+    var btns = document.getElementsByTagName('button');
+
+    // btns得到的是一个伪数组 里面的每一个元素就是 btns[i]
+    for (var i = 0; i < btns.length; i++) {
+      console.log(btns[i]);
+      btns[i].onclick = function () {
+        // 1. 在改变颜色是讲所有北京颜色去掉
+        for (var j = 0; j < btns.length; j++) {
+          btns[j].style.backgroundColor = '';
+        }
+        this.style.backgroundColor = 'pink';
+      }
+    }
+
+    // 2. 首先排除其他人 在设置自己的样式 这种方法我们称为排他思想
+  </script>
+</body>
+
+</html>
