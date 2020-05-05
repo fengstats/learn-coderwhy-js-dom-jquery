@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07-仿京东密码显示</title>
+  <style>
+    .box {
+      position: relative;
+      width: 400px;
+      margin: 100px auto;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .box input {
+      width: 370px;
+      height: 30px;
+      /* 将input标签获得焦点后的样式清除 */
+      outline: none;
+      border: 0;
+    }
+
+    /* 图片缩小 */
+    .box img {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      width: 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <label for="">
+      <img src="images/close.png" alt="" id="eye">
+    </label>
+    <input type="password" name="" id="pwd">
+  </div>
+  <script>
+    // 眼睛状态
+    var flag = 0;
+    // 1. 获取元素
+    var eye = document.querySelector('#eye');
+    var pwd = document.querySelector('#pwd');
+
+    // 2. 注册事件 处理程序
+    eye.onclick = function () {
+      flag = !flag;
+      if (flag) {
+        pwd.type = 'text';
+        eye.src = 'images/open.png';
+      } else {
+        pwd.type = 'password';
+        eye.src = 'images/close.png';
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12-通过className更改元素样式</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+
+    .change {
+      background-color: purple;
+      color: #fff;
+      font-size: 25px;
+      margin-top: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="origin">
+    我是文字
+  </div>
+  <script>
+    // 1. 获取元素
+    var div = document.querySelector('div');
+    div.onclick = function () {
+      // this.style.backgroundColor = 'purple';
+
+      // （这种方法会覆盖原先的类名）我们可以通过修改元素绑定的classNmae来修改元素样式
+      // 优点：适用于样式更改较多或者功能本身比较复杂的情况
+      // this.className = 'change';
+      // 如果想要保留原先的类 将原先的样式增加上去即可
+      // this.className = 'first change';
+      // 或者使用 += ' ' 但是切记需要给字符串最面加上一个空格 因为多类名是使用空格隔开的
+      this.className += ' change';
+    }
+  </script>
+</body>
+
+</html>

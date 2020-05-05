@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06-操作元素之表单属性</title>
+</head>
+
+<body>
+  <button>按钮</button>
+  <input type="text" name="" id="" value="输入内容">
+  <script>
+    // 1. 获取元素
+    var btn = document.querySelector('button');
+    var input = document.querySelector('input');
+
+    // 2. 注册事件 处理程序
+    btn.onclick = function () {
+      // input.innerHTML = '点击了';    // innerHTML对input标签无效
+      // 表单内的值文字内容是通过value进行修改的
+      input.value = '被点击了';
+      // 如果想要某个表单点击过后被禁用 这时候我们将此按钮的disabled属性设置为true即可
+      // btn.disabled = true;
+      // 使用this同理 因为this指向的是时间函数的调用者 这里是btn调用了点击事件
+      this.disabled = true;
+    }
+  </script>
+</body>
+
+</html>

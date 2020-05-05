@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10-循环精灵图</title>
+  <style>
+    ul {
+      padding-inline-start: 0;
+    }
+
+    ul li {
+      list-style: none;
+    }
+
+    .box {
+      display: flex;
+      flex-wrap: wrap;
+      width: 250px;
+      margin: 100px auto;
+    }
+
+    .box li {
+      float: left;
+      width: 24px;
+      height: 24px;
+      background-color: purple;
+      margin: 15px;
+      background: url(images/sprite.png) no-repeat;
+    }
+  </style>
+</head>
+
+<body>
+
+  <ul class="box">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <script>
+    var lis = document.getElementsByTagName('li');
+    // console.log(lis);
+    var offset = 0;
+    for (var i = 0; i < 12; i++) {
+      offset += 44;
+      lis[i].style.backgroundPosition = `0 -${offset}px`;
+    }
+  </script>
+
+</body>
+
+</html>

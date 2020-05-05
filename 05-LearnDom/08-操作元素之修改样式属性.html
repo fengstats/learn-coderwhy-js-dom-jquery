@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08-操作元素之修改样式属性</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <script>
+    // 1. 获取元素
+    var div = document.querySelector('div');
+
+    // 2. 注册事件 处理程序
+    div.onclick = function () {
+      // div.style 修改行内样式 采用驼峰命名法
+      // 行内样式比内嵌样式权重高
+      this.style.background = 'purple';
+      this.style.width = '500px';
+    }
+  </script>
+</body>
+
+</html>
