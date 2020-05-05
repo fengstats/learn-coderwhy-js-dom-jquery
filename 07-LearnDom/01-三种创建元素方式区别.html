@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-三种创建元素方式区别</title>
+</head>
+
+<body>
+  <button>点击</button>
+  <p>abc</p>
+
+  <div class="inner"></div>
+  <div class="create"></div>
+  <script>
+    // 获取元素
+    var btn = document.querySelector('button');
+    // 1. document.write() 创建元素
+    document.write('<div>123</div>')
+
+    // a. 缺点：当整个页面加载完毕后，一定会导致页面重绘
+    // window.onload：页面加载完毕后调用
+    if (false) {
+      window.onload = function () {
+        document.write('<div>123</div>')
+      }
+      btn.onclick = function () {
+        document.write('<div>123</div>')
+      }
+    }
+
+    // 2. innerHTML 创建元素
+    var inner = document.querySelector('.inner');
+    // a. (单个)在div中创建一个链接
+    inner.innerHTML = '<a href="javascript:;">百度</a>';
+    // b. (多个)在div中创建100个
+    for (var i = 0; i < 100; i++) {
+      inner.innerHTML += '<a href="javascript:;">百度</a>';
+    }
+
+    // 3. document.createElement() 创建元素
+    var create = document.querySelector('.create');
+    // a. (单个)
+    var a = document.createElement('a');
+    create.appendChild(a);
+    // b. (多个)
+    for (var i = 0; i <= 100; i++) {
+      var a = document.createElement('a');
+      create.appendChild(a);
+    }
+
+    // 4. 经过测试
+    // 在同时创建1000个元素时:
+    // innerHTML用时1400ms左右
+    // createElement创建用时14ms左右
+    // 但是!!!
+    // innerHTML只要不采取拼接字符串的方式，使用数组形式拼接效率会比createElement效率更高
+    // a. 先声明一个空数组
+    // b. 将创建的字符串依次添加进入数组
+    // c. 最后使用join将字符串中的数据全部拼接渲染出来
+  </script>
+</body>
+
+</html>
