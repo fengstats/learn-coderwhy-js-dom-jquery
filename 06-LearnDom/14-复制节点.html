@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>14-复制节点</title>
+</head>
+
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+  <script>
+    var ul = document.querySelector('ul');
+
+    // 1. node.cloneNode();
+    // a. 如果cloneNode()中不写数据或为false，即浅拷贝，即复制克隆节点本身，不克隆里面的子节点
+    // b. 如果cloneNode(true)，深拷贝，会复制节点本省以及里面所有的内容
+    var li = ul.children[0].cloneNode();
+    var li2 = ul.children[0].cloneNode(true);
+    ul.appendChild(li);
+    ul.appendChild(li2);
+
+
+
+  </script>
+</body>
+
+</html>

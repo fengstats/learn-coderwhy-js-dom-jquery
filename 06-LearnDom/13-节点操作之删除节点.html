@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>13-节点操作之删除节点</title>
+</head>
+
+<body>
+  <button>删除</button>
+  <ul>
+    <li>我是li1</li>
+    <li>我是li2</li>
+    <li>我是li3</li>
+    <li>我是li4</li>
+    <li>我是li5</li>
+    <li>我是li6</li>
+    <li>我是li7</li>
+    <li>我是li8</li>
+    <li>我是li9</li>
+    <li>我是li10</li>
+  </ul>
+  <script>
+    // 1. 获取元素
+    var ul = document.querySelector('ul');
+    var btn = document.querySelector('button');
+
+    // 2. 删除元素 node.removeChild(child)
+    // ul.removeChild(ul.children[0]);
+
+    // 3. 点击删除
+    btn.onclick = function () {
+      // 每次删除第一个，直到删除为止
+      if (ul.children.length == 1) {
+        btn.disabled = 'true';
+      }
+      ul.removeChild(ul.children[0]);
+      console.log(ul.children.length);
+    }
+
+  </script>
+</body>
+
+</html>
