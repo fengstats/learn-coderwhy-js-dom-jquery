@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10-兄弟节点</title>
+</head>
+
+<body>
+  <span>我是span1</span>
+  <div>我是div</div>
+  <span>我是span2</span>
+  <script>
+    var div = document.querySelector('div');
+    // 1. 兄弟节点
+    // a. nextSibling 下一个兄弟节点 包含元素节点或者文本节点等
+    console.log(div.nextSibling);
+    // b. previousSibling 上一个兄弟及诶单
+    console.log(div.previousSibling);
+
+    // 2. 兄弟元素节点: 存在兼容性问题 IE9+
+    console.log(div.nextElementSibling);
+    console.log(div.previousElementSibling);
+
+    // 3. 有没有解决兼容性的方法可以拿到兄弟元素节点
+    // ps: 有，自己封装一个兼容性的函数
+    function getNextElementSibling(element) {
+      var el = element;
+      while (el = el.nextSibling) {
+        if (el.nodeType === 1) {
+          return el;
+        }
+      }
+      return null
+    }
+
+    console.log(getNextElementSibling(div));
+  </script>
+
+</body>
+
+</html>
