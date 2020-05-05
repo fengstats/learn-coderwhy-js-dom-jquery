@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05-注册事件的两种方式</title>
+</head>
+
+<body>
+  <button>传统注册事件</button>
+  <button>方法监听注册事件</button>
+  <button>ie9 attachEvent</button>
+  <script>
+    var btn = document.querySelectorAll('button');
+    btn[0].onclick = function () {
+      alert('hi');
+    };
+    // 同一个事件的唯一性，后面的会覆盖前面的事件
+    btn[0].onclick = function () {
+      alert('hello');
+    };
+
+    // 1. addEventListener 事件监听方式 IE9+
+    // eventTarget.addEventListener(type, listener[, useCapture])
+    // type: 事件类型字符串，比如click, mouseover，注意这里不需要带on
+    // listener: 事件处理函数，事件发生时，会调用该监听函数
+    // useCapture: 可选参数，是一个布尔值，默认为false
+    btn[1].addEventListener('click', function () {
+      alert('222');
+    })
+    // 可以为同一个事件添加多个侦听器(事件处理程序)，不冲突
+    btn[1].addEventListener('click', function () {
+      alert('333');
+    })
+
+
+    // 2. attachEvent ie0以前的版本支持
+    // btn[2].attachEvent('onclick', function () {
+    //   alert("iE9+");
+    // })
+  </script>
+</body>
+
+</html>

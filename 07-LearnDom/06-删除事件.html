@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06-删除事件</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+  <script>
+    var divs = document.querySelectorAll('div');
+    divs[0].onclick = function () {
+      alert(11);
+
+      // 1. 解绑：传统方式删除
+      divs[0].onclick = null;
+    }
+
+    // 2. 使用方法监听的方式解绑删除事件
+    // divs[1].addEventListener('click', function () {
+    //   alert(22);
+    //   divs[1].removeEventListener('click', this);
+    // });
+    divs[1].addEventListener('click', fn);
+    function fn() {
+      alert(22);
+      divs[1].removeEventListener('click', fn);
+    }
+  </script>
+</body>
+
+</html>
