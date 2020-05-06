@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>13-this指向问题</title>
+</head>
+
+<body>
+  <button>点击</button>
+  <script>
+    // this的指向问题 一般情况下this的最终的指向是哪个调用它的对象
+    // 1. 在全局作用域下的指向: 
+    console.log(this); // window
+    function fn() {
+      console.log(this);
+    }
+    // a. 函数调用默认省略一个window 所以调用者是window
+    window.fn(); // window
+
+    // b. 定时器调用
+    setTimeout(() => {
+      console.log(this);
+    }, 1000) // window
+
+
+    // 2. 在方法中的指向：
+    var o = {
+      sayHi: function () {
+        console.log(this);
+      }
+    }
+    // a. 方法调用者
+    o.sayHi(); // o
+
+    // b. 按钮点击
+    var btn = document.querySelector('button');
+    // btn.addEventListener('click', function() {
+    //   console.log(this); // btn
+    // })
+
+    btn.onclick = function () {
+      console.log(this); // btn
+    }
+
+
+
+    // 3. 在构造函数中的指向：
+    function fun() {
+      console.log(this);
+    }
+
+    var fn = new fun();
+
+  </script>
+</body>
+
+</html>

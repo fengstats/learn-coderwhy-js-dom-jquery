@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>14-JS的执行队列</title>
+</head>
+
+<body>
+  <script>
+    // 1. 第一个问题
+    console.log(1);
+
+    // a. 定时器任务是异步的
+    setTimeout(function () {
+      console.log(3);
+    }, 1000)
+
+    console.log(2);
+
+
+    // 2. 第二个问题
+    // JS将执行任务分成了 同步任务 与 异步任务
+    // 同步任务（执行栈）：都放在主线程执行队列，JS会优先执行
+    // 异步任务：都放在任务队列中，JS会在同步任务中所有同步任务执行完成后执行
+    console.log(1);
+
+    // a. 因为定时器是异步任务
+    setTimeout(function () {
+      console.log(3);
+    }, 0)
+
+    console.log(2);
+  </script>
+</body>
+
+</html>
