@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>14.跟随鼠标的天使案例</title>
+  <style>
+    body {
+      position: relative;
+      width: 2000px;
+      height: 2000px;
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="images/angel.gif" alt="">
+  <script>
+    // 获取元素
+    var img = document.querySelector('img');
+    // 1. mousemove: 鼠标移动事件
+    document.addEventListener('mousemove', function (e) {
+      img.style.left = (e.pageX - 50) + 'px';
+      img.style.top = (e.pageY - 70) + 'px';
+    })
+  </script>
+</body>
+
+</html>

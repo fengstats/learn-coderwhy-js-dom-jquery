@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>15.常用键盘事件</title>
+</head>
+
+<body>
+  <script>
+    // 常用的键盘事件
+    // 1. keyup 按键弹起时触发
+    document.addEventListener('keyup', function () {
+      console.log('keyup 键盘弹起');
+    })
+
+    // 2. keydown 按键按下时触发
+    document.addEventListener('keydown', function () {
+      console.log('keydown 键盘按下');
+    })
+
+    // 3. keyup 按键弹起时触发 : 不识别功能键，shift ctrl 上下左右箭头
+    document.addEventListener('keypress', function () {
+      console.log('keypress 我不识别功能键');
+    })
+  </script>
+</body>
+
+</html>

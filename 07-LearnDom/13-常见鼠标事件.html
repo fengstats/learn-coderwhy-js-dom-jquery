@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>13-常见鼠标事件</title>
+  <style>
+    body {
+      height: 2000px;
+    }
+  </style>
+</head>
+
+<body>
+  我是一段不愿意被分享的文字
+  <script>
+    // 1. contextmenu: 禁用右键菜单
+    document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+    });
+
+    // 2. selectstart: 禁用选中文字
+    document.addEventListener('selectstart', function (e) {
+      e.preventDefault();
+    });
+
+    // 3. 鼠标事件对象 MouseEvent
+    document.addEventListener('click', function (e) {
+      // console.log(e);
+      // a. 鼠标在可视区距离x轴 左边框
+      console.log('clientX', e.clientX);
+      console.log('clientY', e.clientY);
+      console.log('------------------');
+      // b. 鼠标在可视区距离y轴 上边框
+
+      // c. 鼠标相对于整个页面文档的坐标 IE9+
+      console.log('pageX', e.pageX);
+      console.log('pageY', e.pageY);
+      console.log('------------------');
+
+      // d. 鼠标对象与整个电脑屏幕的x与y坐标
+      console.log('screenX', e.screenX);
+      console.log('screenY', e.screenY);
+      console.log('------------------');
+    });
+
+  </script>
+</body>
+
+</html>

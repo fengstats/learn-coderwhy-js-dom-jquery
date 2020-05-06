@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>16-常用键盘事件对象</title>
+</head>
+
+<body>
+  <script>
+    // 键盘的事件对象 keyCode: 获取ASCII值
+    // keydown、keyup、不区分大小写
+    // keypress 区分大小写
+    document.addEventListener('keypress', function (e) {
+      var as = e.keyCode;
+      console.log('ASCII', as);
+      // String.fromCharCode: 将ascii码转换为英文字符
+      alert('您按下了' + String.fromCharCode(as) + '键')
+    })
+  </script>
+</body>
+
+</html>
