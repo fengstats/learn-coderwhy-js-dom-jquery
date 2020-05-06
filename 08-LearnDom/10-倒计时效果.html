@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>10-倒计时效果</title>
+  <style>
+    div {
+      margin: 200px;
+    }
+
+    span {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background-color: #333;
+      font-size: 20px;
+      color: #fff;
+      text-align: center;
+      line-height: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <span class="hour">1</span>
+    <span class="minute">2</span>
+    <span class="second">3</span>
+  </div>
+  <script>
+    // 1. 获取元素 
+    var hour = document.querySelector('.hour');     // 小时的黑色盒子
+    var minute = document.querySelector('.minute'); // 分钟的黑色盒子
+    var second = document.querySelector('.second'); // 秒数的黑色盒子
+    var inputTime = +new Date('2020-5-6 23:00:00'); // 返回的是用户输入时间总的毫秒数
+    // 解决刷新后显示 1 2 3 bug
+    // 因为灯饰器需要等待 所以先调用一次此函数
+    countDown();
+
+    setInterval(countDown, 1000);
+
+    function countDown() {
+      var date = +new Date();
+      // 获取总秒数
+      var now = (inputTime - date) / 1000;
+      // 获取小时数
+      var h = parseInt(now / 60 / 60 % 24);
+      // 获取分钟数
+      var m = parseInt(now / 60 % 60)
+      // 获取秒数
+      var s = parseInt(now % 60);
+      h = h < 10 ? '0' + h : h;
+      m = m < 10 ? '0' + m : m;
+      s = s < 10 ? '0' + s : s;
+
+      hour.innerHTML = h;
+      minute.innerHTML = m;
+      second.innerHTML = s;
+    }
+  </script>
+</body>
+
+</html

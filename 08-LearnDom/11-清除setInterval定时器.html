@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>11-清除setInterval定时器</title>
+</head>
+
+<body>
+  <button class="begin">开启定时器</button>
+  <button class="stop">停止定时器</button>
+  <script>
+    var begin = document.querySelector('.begin');
+    var stop = document.querySelector('.stop');
+    // 可以再局部调用 不受作用域影响
+    var timer = null; // 全局变量  null是一个空对象
+    begin.addEventListener('click', function () {
+      timer = setInterval(function () {
+        console.log('ni hao ma');
+
+      }, 1000);
+    })
+
+    stop.addEventListener('click', () => {
+      clearInterval(timer);
+      console.log('已清除');
+    })
+  </script>
+</body>
+
+</html>

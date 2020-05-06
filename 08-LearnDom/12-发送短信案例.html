@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>12-发送短信案例</title>
+</head>
+
+<body>
+  手机号码： <input type="number"> <button>发送</button>
+  <script>
+    var btn = document.querySelector('button');
+    var time = 3;
+    btn.addEventListener('click', () => {
+      btn.disabled = true;
+
+      function callback() {
+        if (time == 0) {
+          // 清除定时器和复原按钮
+          clearInterval(timer);
+          btn.disabled = false;
+          btn.innerHTML = '发送';
+          time = 3;
+        } else {
+          btn.innerHTML = '还剩下' + time + '秒';
+          time--;
+        }
+      }
+
+      callback();
+      var timer = setInterval(callback, 1000);
+    })
+  </script>
+</body>
+
+</html>
