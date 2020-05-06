@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>index</title>
+  <style>
+    div {
+      width: 100px;
+      height: 40px;
+      margin: 100px auto;
+      background-color: skyblue;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <script>
+    var div = document.querySelector('div');
+    console.log(location.search); // ?uname="提交内容"
+
+    // 1. 先去掉? substr('起始位置', 截取字符数);
+    var params = location.search.substr(1);
+    console.log(params);
+
+    // 2. 利用 = 将字符串分割成数组
+    var arr = params.split('=');
+    console.log(arr);
+
+    // 3. 取出数组中的第二个元素
+    var uname = arr[1];
+    console.log(uname);
+
+    // 4. 显示数据
+    div.innerHTML = uname + '欢迎您';
+  </script>
+</body>
+
+</html>
