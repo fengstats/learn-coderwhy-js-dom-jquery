@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06-定时器(setTimeout)</title>
+</head>
+
+<body>
+  <script>
+    // 1. setTimeout
+    // []: 可选参数
+    // 语法规范：window.setTimeout(调用函数, [延时时间/ms]);
+    // a. 函数可以单独写
+    // b. 延时时间可以省略，默认瞬间执行
+    // c. window可以省略
+    function callback() {
+      console.log('定时器爆炸');
+    }
+
+    // d. 回调函数
+    setTimeout(callback, 1000);
+    setTimeout(callback, 2000);
+  </script>
+</body>
+
+</html>
