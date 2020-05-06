@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>09-常见事件对象属性和方法</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      margin: 100px auto;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div>123</div>
+  <ul>
+    <li>abc1</li>
+    <li>abc2</li>
+    <li>abc3</li>
+  </ul>
+  <script>
+    // 常见事件对象的属性和方法
+    var div = document.querySelector('div');
+    div.addEventListener('click', function (e) {
+      console.log(e.target);
+      console.log(this);
+    })
+
+    // a. e.target 返回的是触发事件的元素(对象): 点击谁，返回谁
+    // b. this 返回的是绑定事件的元素(对象) ： 绑定谁，返回谁
+    var ul = document.querySelector('ul');
+    ul.addEventListener('click', function (e) {
+      console.log(e.target);
+      console.log(this);
+      // 与this相似 但是有兼容性问题，所以一般在开发时都选择this
+      console.log(e.currentTarget);
+    })
+
+    // IE兼容性
+    // div.onclick = function(e) {
+    //   e = e || window.event;
+    //   var target = e.target || e.srcElement;
+    //   console.log(target);
+    // }
+  </script>
+</body>
+
+</html>

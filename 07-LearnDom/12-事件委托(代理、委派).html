@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12-事件委托(代理、委派)</title>
+</head>
+
+<body>
+  <ul>
+    <li>知否知否，饮食灵魂画手1</li>
+    <li>知否知否，饮食灵魂画手2</li>
+    <li>知否知否，饮食灵魂画手3</li>
+    <li>知否知否，饮食灵魂画手4</li>
+    <li>知否知否，饮食灵魂画手5</li>
+    <li>知否知否，饮食灵魂画手6</li>
+  </ul>
+  <script>
+    // 事件委托的核心原理：给父标签添加侦听器，利用事件冒泡影响每一个子节点
+    var ul = document.querySelector('ul');
+    ul.addEventListener('click', function(e) {
+      alert(e.target);
+      // e.target就是当前点击元素
+      e.target.style.background = 'pink';
+    })
+  </script>
+</body>
+
+</html>

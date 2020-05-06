@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11-阻止事件冒泡</title>
+  <style>
+    .father {
+      position: relative;
+      margin: 100px auto;
+      width: 400px;
+      height: 400px;
+      background-color: skyblue;
+    }
+
+    .son {
+      position: absolute;
+      /* 水平垂直居中 */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 200px;
+      text-align: center;
+      line-height: 200px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="father">
+    父盒子
+    <div class="son">son子盒子</div>
+  </div>
+  <script>
+    var son = document.querySelector('.son');
+    var father = document.querySelector('.father');
+    // 1. 如果addEventListener 第三个参数时false或者省略 那么则属于冒泡阶段
+    // document <- html <- body <- father <- son (依次往上传播)
+    son.addEventListener('click', function (e) {
+      alert('son');
+      // 停止传播，阻止冒泡
+      e.stopPropagation();
+
+      // 兼容非标准 
+      // e.cancelBubble = true;
+
+    }, false);
+    // 事件会先捕获father点击
+    father.addEventListener('click', function () {
+      alert('father');
+    }, false);
+    document.addEventListener('click', function () {
+      alert('document');
+    });
+
+
+  </script>
+</body>
+
+</html>
