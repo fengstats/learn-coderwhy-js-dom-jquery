@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-仿京东按键监听</title>
+</head>
+
+<body>
+  <input type="text" value="">
+
+  <script>
+    var input = document.querySelector('input');
+    document.addEventListener('keyup', function (e) {
+      console.log(e.keyCode);
+      var str = String.fromCharCode(e.keyCode);
+      console.log(str);
+      if (e.keyCode === 83) {
+        // 获得焦点
+        input.focus();
+      }
+    })
+  </script>
+</body>
+
+</html>
