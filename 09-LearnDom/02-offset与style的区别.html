@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>02-offset与style的区别</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" style="width: 200px;"></div>
+  <script>
+    // offset与style的区别
+    var box = document.querySelector('.box');
+
+    console.log(box.offsetWidth); // 220: 包含padding
+    console.log(box.style.width); // 200px: 不包含padding
+    // 不能赋值
+    // box.offsetWidth = '300px';
+    // 可以赋值
+    box.style.width = '300px';
+  </script>
+</body>
+
+</html>
