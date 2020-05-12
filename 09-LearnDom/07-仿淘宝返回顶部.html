@@ -115,11 +115,36 @@
 
     goBack.addEventListener('click', function () {
       console.log('点击成功');
+      // 返回顶部 scroll(x轴, y轴); 注意参数不带单位
+      // window.scroll(0, 0);
+      animate(window, 0);
     })
 
     goBack.addEventListener('selectstart', function (e) {
       e.preventDefault();
     });
+
+    // 动画函数: 将左右相关的值修改为上下相关
+    function animate(obj, target, callback) {
+      clearInterval(obj.timer);
+      obj.timer = setInterval(function () {
+        // 整数问题: 往上取整 ceil() 天花板函数
+        var step = (target - obj.pageYOffset) / 10;
+        // 三元表达式写法
+        step = step > 0 ? Math.ceil(step) : Math.floor(step);
+        // 设置停止条件 让动画到400像停止
+        if (obj.pageYOffset == target) {
+          clearInterval(obj.timer);
+          if (callback) {
+            callback(obj);
+          }
+        }
+        console.log(obj.pageYOffset);
+        // obj.style.top =  + step + 'px';
+        window.scroll(0, obj.pageYOffset + step);
+      }, 15);
+    }
+
 
 
   </script>
