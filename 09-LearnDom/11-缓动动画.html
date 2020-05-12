@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11-缓动动画</title>
+  <style>
+    div {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <button>
+    动起来夏雨荷500
+  </button>
+  <button>
+    动起来夏雨荷800
+  </button>
+  <button>
+    动起来夏雨荷500 黄色
+  </button>
+  <button>
+    动起来夏雨荷800 红色
+  </button>
+  <div></div>
+  <script>
+    // 缓动动画: 动画从快到慢执行
+    // 1. 获取盒子位置
+    var div = document.querySelector('div');
+    var btn = document.querySelectorAll('button');
+    // 2. 算法: (目标值 - 当前位置) / 10
+    // 简单动画函数封装
+    // obj: 目标对象
+    // target: 目标位置
+    function animate(obj, traget) {
+      // var timer = setInterval(function () {
+      // 使用给对象添加属性的方式保证变量的冲突以及重复开辟空间浪费内存问题
+      // bug: 当我们不断点击移动按钮，这个元素的速度会越来越快，因为开启了太多的定时器
+      // 解决方案就是 让本元素只会存在一个定时器 在执行前先清除之前的定时器 在执行
+      clearInterval(obj.timer);
+      obj.timer = setInterval(function () {
+        // 整数问题: 往上取整 ceil() 天花板函数
+        var step = (traget - obj.offsetLeft) / 10;
+        // 负值时: 往小了取整
+        // if (step > 0) {
+        //   step = Math.ceil(step);
+        // } else {
+        //   step = Math.floor(step);
+        // }
+        // 三元表达式写法
+        step = step > 0 ? Math.ceil(step) : Math.floor(step);
+        // 设置停止条件 让动画到400像停止
+        if (obj.offsetLeft == traget) {
+          clearInterval(obj.timer);
+        }
+        obj.style.left = obj.offsetLeft + step + 'px';
+      }, 15);
+    }
+
+    btn[0].addEventListener('click', function () {
+      animate(div, 500);
+    })
+
+    btn[1].addEventListener('click', function () {
+      animate(div, 800);
+    })
+
+    // 2. 回调函数: 将函数1作为参数传入函数2中, 等待函数2执行完毕调用
+    function animate2(obj, traget, callback, color) {
+      clearInterval(obj.timer);
+      obj.timer = setInterval(function () {
+        // 整数问题: 往上取整 ceil() 天花板函数
+        var step = (traget - obj.offsetLeft) / 10;
+        // 三元表达式写法
+        step = step > 0 ? Math.ceil(step) : Math.floor(step);
+        // 设置停止条件 让动画到400像停止
+        if (obj.offsetLeft == traget) {
+          clearInterval(obj.timer);
+          if (callback) {
+            callback(obj, color);
+          }
+        }
+        obj.style.left = obj.offsetLeft + step + 'px';
+      }, 15);
+    }
+
+    function callback(obj, color) {
+      obj.style.backgroundColor = color;
+      alert('改变成功');
+    }
+
+    btn[2].addEventListener('click', function () {
+      animate2(div, 500, callback, 'yellow');
+    })
+
+    btn[3].addEventListener('click', function () {
+      animate2(div, 800, callback, 'red ');
+    })
+    
+
+  </script>
+</body>
+
+</html>

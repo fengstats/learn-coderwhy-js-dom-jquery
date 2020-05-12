@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>反复横跳</title>
+  <script src="./12-animate.js"></script>
+  <style>
+    .sliderbar {
+      position: fixed;
+      right: 0;
+      top: 20px;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    .sliderbar span {
+      /* z-index: 1; */
+      /* background-color: pink; */
+    }
+
+    .con {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200px;
+      height: 40px;
+      border-radius: 20px;
+      background-color: purple;
+      z-index: -1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="sliderbar">
+    <span>☼</span>
+    <div class="con">问题反馈</div>
+  </div>
+  <script>
+    // 当我们鼠标经过 sliderbar 就让 con 盒子滑动到左侧
+    // 当我们鼠标离开 sliderbar 就让 con 盒子滑动到右侧
+
+    // 1. 获取元素
+    var sliderbar = document.querySelector('.sliderbar');
+    var con = document.querySelector('.con');
+
+    // 2. 鼠标事件
+    sliderbar.addEventListener('mouseenter', function () {
+      animate(con, -160, function () {
+        sliderbar.children[0].innerHTML = '☀';
+      });
+    })
+
+    sliderbar.addEventListener('mouseleave', function () {
+      animate(con, 0, function () {
+        sliderbar.children[0].innerHTML = '☼';
+      });
+    })
+  </script>
+</body>
+
+</html>
