@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>07-仿淘宝返回顶部</title>
+  <style>
+    .slider-bar {
+      position: absolute;
+      left: 50%;
+      top: 300px;
+      margin-left: 600px;
+      width: 45px;
+      height: 130px;
+      background-color: pink;
+    }
+
+    .w {
+      width: 1200px;
+      margin: 10px auto;
+    }
+
+    .header {
+      height: 150px;
+      background-color: purple;
+    }
+
+    .banner {
+      height: 250px;
+      background-color: skyblue;
+    }
+
+    .main {
+      height: 1000px;
+      background-color: yellowgreen;
+    }
+
+    span {
+      display: none;
+      position: absolute;
+      bottom: 0;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slider-bar">
+    <span class="goBack">返回顶部</span>
+  </div>
+  <div class="header w">头部区域</div>
+  <div class="banner w">banner区域</div>
+  <div class="main w">主体部分</div>
+  <script>
+    // 1. 获取元素
+    // a. 侧边栏
+    var sliderbar = document.querySelector('.slider-bar');
+    // b. banner元素
+    var banner = document.querySelector('.banner');
+    // c. main主体元素
+    var main = document.querySelector('.main');
+    // d. goBack 返回顶部
+    var goBack = document.querySelector('.goBack');
+
+    // banner距离顶部距离
+    var bannerTop = banner.offsetTop;
+    // console.log(banner.offsetTop);
+
+    // 侧边栏距离顶部距离: 固定定位之后的
+    var sliderBarTop = sliderbar.offsetTop - bannerTop;
+    // console.log(sliderBarTop);
+
+
+    // 主体部分距离顶部距离
+    var mainTop = main.offsetTop;
+    console.log(mainTop);
+
+
+    // 2. 添加页面滚动事件 scroll
+    document.addEventListener('scroll', function () {
+      // a. window.pageYOffset: 页面被卷去头部高度
+      // console.log(window.pageYOffset);
+
+      // b. 当页面被卷去头部大于等于170，此时将侧标栏更改为固定定位
+      if (window.pageYOffset >= bannerTop) {
+        sliderbar.style.position = 'fixed';
+        sliderbar.style.top = sliderBarTop + 'px';
+      } else {
+        sliderbar.style.position = 'absolute';
+        sliderbar.style.top = '300px';
+      }
+
+      // c. 当我们页面滚动到main盒子时，显示goback模块
+      if (window.pageYOffset >= bannerTop) {
+        goBack.style.display = 'block';
+      } else {
+        goBack.style.display = 'none';
+      }
+
+      // console.log('元素距离页面顶部滚动 ', getScroll().top);
+    })
+
+    // 3. 封装函数解决浏览器兼容性问题: IE6 7 8
+    function getScroll() {
+      return {
+        left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+      };
+    }
+
+    // 使用方式
+    // console.log(getScroll().left);
+
+    goBack.addEventListener('click', function () {
+      console.log('点击成功');
+    })
+
+    goBack.addEventListener('selectstart', function (e) {
+      e.preventDefault();
+    });
+
+
+  </script>
+</body>
+
+</html>

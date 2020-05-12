@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06-scroll系列</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      border: 20px solid red;
+      background-color: pink;
+      padding: 10px;
+      overflow: scroll;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容
+    我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容
+    我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容
+  </div>
+
+  <script>
+    // 1. scroll 系列: 返回数值不带单位
+    var div = document.querySelector('div')
+
+    // a. scrollHeight: 不包含边框 包含padding 当文字内容超出边框时也会包含
+    console.log(div.scrollHeight);
+    console.log(div.clientHeight);
+
+    // 2. scroll滚动事件: 当我们滚动滚动条时触发的事件
+    div.addEventListener('scroll', function () {
+      // scrollTop: 从最开始头部上沿到滚动区域上沿距离（被卷去的上侧距离）
+      console.log(div.scrollTop);
+    })
+  </script>
+</body>
+
+</html>
