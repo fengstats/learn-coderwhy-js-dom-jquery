@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11-记住用户名</title>
+</head>
+
+<body>
+  <input type="text" name="" id="username"> <input type="checkbox" id="remember"> 记住用户名
+  <script>
+    // 1. 获取元素
+    // a. 复选框
+    var remember = document.querySelector('#remember');
+    // b. 输入框
+    var username = document.querySelector('#username');
+
+    // 2. 判断本地存储中是否存在 username 缓存
+    if (localStorage.getItem('username')) {
+      username.value = localStorage.getItem('username');
+      remember.checked = true;
+    }
+
+    // 3. 用户是否勾选复选框
+    remember.addEventListener('change', function () {
+      if (this.checked) {
+        localStorage.setItem('username', username.value);
+      } else {
+        localStorage.removeItem('username');
+      }
+    })
+
+
+
+  </script>
+</body>
+
+</html>
