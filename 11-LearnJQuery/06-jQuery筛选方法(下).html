@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05-jQuery筛选方法</title>
+  <script src="jquery.js"></script>
+</head>
+
+<body>
+
+  <ol>
+    <li>我是ol的li</li>
+    <li>我是ol的li</li>
+    <li class="item">我是ol的li</li>
+    <li>我是ol的li</li>
+    <li>我是ol的li</li>
+    <li>我是ol的li</li>
+  </ol>
+
+  <ul>
+    <li>我是ul的li</li>
+    <li>我是ul的li</li>
+    <li>我是ul的li</li>
+    <li>我是ul的li</li>
+    <li>我是ul的li</li>
+    <li>我是ul的li</li>
+  </ul>
+
+  <div class="current">我有current类</div>
+  <di>我没有current类</di>
+  <script>
+    $(function () {
+      // 1. 兄弟元素
+      // a. siblings(): 将除了自身以外的亲兄弟元素的字体颜色变为红色
+      $("ol .item").siblings("li").css("color", "red");
+
+      // b. nextAll(): 将自身元素之后的亲兄弟颜色变为绿色
+      $("ol .item").nextAll().css("color", "green");
+
+      // c. prevAll(): 之前的变成蓝色
+      $("ol .item").prevAll().css("color", "blue");
+
+      // 2. 选择ul中第2个li元素变为红色
+      // a. 选择器方式
+      // $("ul li:eq(1)").css("color", "red"); 
+      // b. 选择方法
+      $("ul li").eq(1).css("color", "red");
+
+      // 3. 判断是否有某个类名
+      // 包含: true  不包含: false
+      // 选择两个div 第一个有 第二个没有 查看返回结果
+      console.log($('div').eq(0).hasClass('current'));
+      console.log($('div').eq(1).hasClass('current'));
+    })
+  </script>
+</body>
+
+</html>

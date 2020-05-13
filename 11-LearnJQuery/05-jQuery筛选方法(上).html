@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05-jQuery筛选方法</title>
+  <script src="jquery.js"></script>
+</head>
+
+<body>
+
+  <div class="grandpa">
+    <div class="father">
+      <div class="son">儿子</div>
+    </div>
+  </div>
+
+  <div class="nav">
+    <p>我是一个快乐的屁标签</p>
+    <div>
+      <p>我也是，不过在div下</p>
+    </div>
+  </div>
+  <script>
+    $(function () {
+      // 1. parent(): 获取父级，最近一级
+      console.log($('.son').parent());
+
+      // 2. children(): 获取子级，亲儿子 类似子代选择器 ul>li
+      console.log($('.nav').children("p").css("color", "red"));
+
+      // 3. find(): 可以选择内部所有的孩子，包括儿子或者孙子 类似于后代选择器
+      console.log($('.nav').find("p").css("background", "pink"));
+    })
+  </script>
+</body>
+
+</html>
