@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02-jQuery内容文本值</title>
+  <script src="jquery.js"></script>
+</head>
+
+<body>
+  <div>
+    <span>我是内容</span>
+  </div>
+  <input type="text" name="" id="" value="请输入内容">
+  <script>
+    // 1. html()
+    // 普通元素内容 类似原生innerHTML()
+    // a. 获取div的html内容 (包含标签)
+    console.log($("div").html());
+
+    // b. 设置div的html内容
+    // $("div").html("阿西吧");
+
+
+    // 2. text()
+    // 获取设置元素的文本内容
+    // a. 获取div文本内容
+    console.log($("div").text());
+    // b. 设置div文本内容
+    $("div").text("阿西吧");
+
+
+    // 3. val()
+    // 获取设置表单值
+    // a. 获取input文本内容
+    console.log($("input").val());
+    // b. 设置input文本内容
+    $("input").val("阿西吧");
+
+
+  </script>
+</body>
+
+</html>
