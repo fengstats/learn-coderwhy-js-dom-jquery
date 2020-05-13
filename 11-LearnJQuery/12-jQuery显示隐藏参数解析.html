@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12-jQuery效果解析</title>
+  <script src="jquery.js"></script>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      margin: 40px auto;
+      background-color: pink;
+    }
+
+    .nav {
+      width: 150px;
+      margin-top: 20px;
+      background-color: transparent;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <button>显示</button>
+    <button>隐藏</button>
+    <button>切换</button>
+  </div>
+  <div></div>
+  <script>
+    $(function () {
+      // 1. show([speed, [easing], [fn]])
+      // 因为形参使用[]，所以都为可选参数
+      // (1) speed: 三种预定速度之一的字符串("slow", "normal", "fast") 或者直接表示动画时长的毫秒数值(如: 1000)
+      // (2) easing: (Optional) 用来指定切换效果，默认是 "swing", 可用参数 "linear"
+      // (3) fn: 回调函数，在动画完成时执行的函数，每个元素执行一次
+      var valShow = $("button").eq(0);
+      var valHide = $("button").eq(1);
+      var valChange = $("button").eq(2);
+
+      var div = $("div").eq(1);
+
+      valShow.click(function () {
+        div.show("fast", function () {
+        });
+      })
+
+      valHide.click(function () {
+        div.hide(500, function () {
+        });
+      })
+
+      valChange.click(function () {
+        div.toggle("normal", "linear")
+      })
+
+
+    })
+  </script>
+</body>
+
+</html>

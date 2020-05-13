@@ -81,9 +81,9 @@
           <a href="">@我</a>
         </li>
       </ul>
-    
+
     </li>
-    
+
     <li>
       <a href="#">微博</a>
       <ul>
@@ -98,7 +98,7 @@
         </li>
       </ul>
     </li>
-    
+
     <li>
       <a href="#">微博</a>
       <ul>
@@ -113,7 +113,7 @@
         </li>
       </ul>
     </li>
-    
+
     <li>
       <a href="#">微博</a>
       <ul>
@@ -132,13 +132,13 @@
   <script>
     $(function () {
       // mouseover(function): 当鼠标经过 nav下的li标签时子元素显示
-      $(".nav>li").mouseover(function() {
-        $(this).children("ul").show();
+      $(".nav>li").mouseover(function () {
+        $(this).children("ul").slideDown("fast");
       })
 
       // mouseout(function): 离开时隐藏
-      $(".nav>li").mouseout(function() {
-        $(this).children("ul").hide();
+      $(".nav>li").mouseout(function () {
+        $(this).children("ul").slideUp("fast");
       })
 
     })
