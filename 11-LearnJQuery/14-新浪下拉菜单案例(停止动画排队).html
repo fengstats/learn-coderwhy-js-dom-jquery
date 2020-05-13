@@ -156,7 +156,9 @@
       // 3. 事件切换 如果只写一个函数
       $(".nav>li").hover(
         function () {
-          $(this).children("ul").slideToggle(200);
+          // stop(): 停止动画排队
+          // 写在动画前面
+          $(this).children("ul").stop().slideToggle(200);
         }
       )
 
