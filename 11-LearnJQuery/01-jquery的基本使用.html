@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-jquery的基本使用</title>
+  <script src="jquery.js"></script>
+  <script>
+    // 1. jquery的等待加载: 类似于原生JS中的DOMContentLoaded
+    $(document).ready(function () {
+      // $('div').hide();
+    })
+
+
+    // 2. 直接写一个jQuery的入口函数
+    $(function () {
+      $('div').hide();
+
+      $('button').click(function () {
+        //  3. $符号是 jQuery的别称 可以直接使用jQuery (顶级对象 == 原始JS的window)
+        jQuery('div').show();
+      })
+    })
+
+
+  </script>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <button>显示</button>
+  <div></div>
+</body>
+
+</html>

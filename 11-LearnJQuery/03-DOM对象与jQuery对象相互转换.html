@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03-DOM对象与jQuery对象相互转换</title>
+  <script src="jquery.js"></script>
+</head>
+
+<body>
+  <!-- muted: google禁用声音后 可以自动播放 -->
+  <video src="mov.mp4" muted></video>
+  <script>
+    // 1. DOM对象 转换成 jQuery对象
+    // (1) 我们直接获取视频，得到的就是jQuery对象
+    $('video');
+    // (2) 我们已经使用原生js 获取过来就是 DOM对象
+    var myvideo = document.querySelector('video');
+    // $() 进行包装
+    // $(myvideo).play(); // jQuery没有play()这个方法
+
+    // 2. jQuery对象 转换成 DOM对象
+    // myvideo.play();
+    // 直接通过下标获取DOM元素对象
+    console.log($('video'));
+    // $('video')[0].play();
+    $('video').get(0).play();
+  </script>
+</body>
+
+</html>
