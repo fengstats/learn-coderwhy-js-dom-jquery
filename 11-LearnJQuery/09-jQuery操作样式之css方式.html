@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>09-jQuery操作样式之css方式</title>
+  <script src="jquery.js"></script>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      color: red;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+  </div>
+  <script>
+    $(function () {
+      // 操作样式之css方法
+      // a. 获取div元素颜色 
+      var color = $('div').css('color');
+      console.log('div颜色', color); // 返回的是rgb()格式
+
+      // b. 修改div宽度 如果内部的值可以使用数字
+      $("div").css("width", "300px");
+      $("div").css("width", 200);
+
+      // c. 修改多个属性
+      // 使用对象修改：遇到复合属性则必须采用驼峰命名法，如果值不是数字需要添加引号
+      $("div").css({
+        width: 100,
+        height: 400,
+        backgroundColor: "red"
+      })
+    })
+  </script>
+</body>
+
+</html>

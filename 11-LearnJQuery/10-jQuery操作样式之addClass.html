@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10-jQuery操作样式之addClass</title>
+  <script src="jquery.js"></script>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      margin: 100px auto;
+      transition: all .5s;
+      background-color: pink;
+    }
+
+    .current {
+      background-color: red;
+      transform: rotate(360deg);
+    }
+  </style>
+</head>
+
+<body>
+  <button>去除红色</button>
+  <div></div>
+  <br>
+  <div class="change"></div>
+  <script>
+    $(function () {
+      // 1. addClass(): 添加类，无需加逗号
+      $("div").eq(0).click(function () {
+        $(this).addClass("current");
+      })
+
+      // 2. removeClass(): 删除类
+      $('button').click(function () {
+        $("div").eq(0).removeClass("current");
+      })
+
+      // 3. toggleClass(): 切换类
+      // 存在: 移除   不存在：添加
+      $('.change').click(function () {
+        $(this).toggleClass("current");
+      })
+    })
+
+  </script>
+</body>
+
+</html>
