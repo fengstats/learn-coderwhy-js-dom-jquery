@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>jQuery基本</title>
+  <script src="jquery.js"></script>
+</head>
+
+<body>
+  <div>我是div</div>
+  <div>我是div</div>
+  <div>我是div</div>
+  <div>我是div</div>
+  <div class="nav">我是nav div</div>
+  <p>我是p</p>
+  <ol>
+    <li>我是ol 的</li>
+    <li>我是ol 的</li>
+    <li>我是ol 的</li>
+    <li>我是ol 的</li>
+  </ol>
+  <ul>
+    <li>我是ul 的</li>
+    <li>我是ul 的</li>
+    <li>我是ul 的</li>
+    <li>我是ul 的</li>
+    <li>我是ul 的</li>
+    <li>我是ul 的</li>
+    <li>我是ul 的</li>
+  </ul>
+  <script>
+    $(function () {
+      // 1. 类选择器
+      console.log($(".nav"));
+
+      // 2. 层级选择器: 获取ul下的li标签
+      console.log($("ul li"));
+      // console.log($("ul>li"));
+
+      // 3. 标签选择器获取div 
+      console.log($("div"));
+      // 并设置背景颜色为粉色 $().css('属性', '属性值');
+      $('div').css('background', 'pink'); // div全部改变
+      // ！隐式迭代: 给匹配到的所有元素进行循环遍历，执行相应的方法，而不用我们再进行循环，简化我们的操作，方便我们调用
+
+
+      // 4. 筛选选择器
+      // a. 选择ul下的第1个小li，字体颜色为红色
+      $('ul li:first').css('color', 'red')
+
+      // b. 最后一个小li，绿色
+      $('ul li:last').css('color', 'green')
+
+      // c. 第三个， 蓝色 (注意！下标从0开始)
+      $('ul li:eq(2)').css('color', 'blue')
+
+      // d. 选择ol中索引号为奇数的li标签颜色改为粉色 偶数改为紫色 (注意！下标从0开始)
+      $('ol li:odd').css('color', 'pink')
+
+      $('ol li:even').css('color', 'purple')
+
+    })
+  </script>
+</body>
+
+</html>
