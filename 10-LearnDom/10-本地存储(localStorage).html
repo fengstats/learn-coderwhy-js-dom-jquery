@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10-本地存储(localStorage)</title>
+</head>
+
+<body>
+
+  <input type="text" name="" id="">
+  <button class="set">存储数据</button>
+  <button class="get">获取数据</button>
+  <button class="remove">删除数据</button>
+  <button class="del">清空数据</button>
+  <script>
+    // localStorage: 
+    // 1. 获取元素
+    var ipt = document.querySelector('input');
+    // a. 存储数据点击按钮
+    var set = document.querySelector('.set');
+    set.addEventListener('click', () => {
+      // 点击后 存储表单输入值
+      var val = ipt.value;
+      console.log('表单数据获取', val);
+      // setItem('key', 'value'); key: 获取数据时需要的标识
+      if (val != '') {
+        localStorage.setItem('uname', val);
+        localStorage.setItem('pwd', val);
+        console.log('存储成功!!!');
+      } else {
+        console.log('数据为空 无法存储');
+      }
+    })
+
+    // b. 获取数据点击按钮
+    var get = document.querySelector('.get');
+    get.addEventListener('click', () => {
+      console.log(localStorage.getItem('uname'));
+    })
+
+    // c. 删除数据点击按钮
+    var remove = document.querySelector('.remove');
+    remove.addEventListener('click', () => {
+      localStorage.removeItem('uname');
+    })
+
+    // d. 清空所有数据点击按钮
+    var del = document.querySelector('.del');
+    del.addEventListener('click', () => {
+      localStorage.clear();
+    })
+  </script>
+
+</body>
+
+</html>
