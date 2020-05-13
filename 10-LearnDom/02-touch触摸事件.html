@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02-touch触摸事件</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <script>
+    // 1. 获取元素
+    var div = document.querySelector('div');
+
+    // a. 手指触摸DOM元素事件
+    div.addEventListener('touchstart', e => {
+      console.log(e);
+      // (1) touches: 正在触摸屏幕的所有手指列表
+      // (2) targetTouch: 正在触摸当前DOM元素上的手指列表 (常用)
+      // (3) changedTouches: 手指状态发生了改变的列表 从无到有 或者 从有到无
+      // (4) 获取第一个手指的各种信息
+      console.log(e.targetTouches[0]);
+    })
+
+    // b. 手指在DOM元素上移动
+    div.addEventListener('touchmove', () => {
+      console.log('还摸');
+    })
+
+    // c. 手指弹开后的事件
+    div.addEventListener('touchend', e => {
+      // 当我们手指离开屏幕的时候，touches与targetTouches列表将消失
+      // 只剩下changedTouches
+      console.log(e);
+    })
+    
+  </script>
+</body>
+
+</html>
