@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08-jQuery中的排他思想</title>
+  <script src="jquery.js"></script>
+</head>
+
+<body>
+  <button>快速</button>
+  <button>快速</button>
+  <button>快速</button>
+  <button>快速</button>
+  <button>快速</button>
+  <button>快速</button>
+  <button>快速</button>
+  <script>
+    $(function () {
+      // 1. 隐式迭代 给所有按钮都绑定了点击事件
+      $("button").click(function () {
+        // a. 当前按钮添加字体颜色
+        $(this).css("color", "red");
+        // b. 其余兄弟去除字体颜色
+        $(this).siblings().css("color", "");
+      })
+    })
+  </script>
+</body>
+
+
+</html>
