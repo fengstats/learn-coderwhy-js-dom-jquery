@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>16-jQuery自定义动画效果animate</title>
+  <script src="jquery.js"></script>
+  <style>
+    div {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <button>动画开始执行</button>
+  <div></div>
+  <script>
+    $(function () {
+      // animate({属性}, 时间)
+
+      $("button").click(function () {
+        // 在500ms内 往右下移动500*200距离 透明度设置为0.4
+        $("div").animate(
+          {
+            left: 500,
+            top: 200,
+            opacity: .4
+          },
+          500
+        )
+      })
+    })
+  </script>
+</body>
+
+</html>

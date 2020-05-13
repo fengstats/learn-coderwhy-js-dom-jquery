@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>15-jQuery动画效果之淡入淡出</title>
+  <script src="jquery.js"></script>
+  <style>
+    div {
+      width: 150px;
+      height: 300px;
+      background-color: pink;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <button>淡入效果</button>
+  <button>淡出效果</button>
+  <button>淡入淡出切换</button>
+  <button>修改透明度</button>
+  <div></div>
+  <script>
+    $(function () {
+      $("button").eq(0).click(function () {
+        // 1. 淡入
+        $("div").fadeIn(1000);
+      })
+
+      $("button").eq(1).click(function () {
+        // 2. 淡出
+        $("div").fadeOut(1200);
+      })
+
+      $("button").eq(2).click(function () {
+        // 3. 淡入淡出切换
+        $("div").fadeToggle(1200);
+      })
+
+      $("button").eq(3).click(function () {
+        // 4. 透明度修改 fadeTo(速度, 动画时间)
+        $("div").fadeTo(1000, .5);
+      })
+
+    });
+  </script>
+</body>
+
+</html>
