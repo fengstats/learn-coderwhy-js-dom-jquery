@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11-jQuery对象拷贝</title>
+  <script src="jquery.js"></script>
+  <script>
+    $(function () {
+
+      // 1. (复杂数据类型引用)浅拷贝: 把拷贝的对象的复杂数据类型中的地址拷贝给目标对象，修改目标对象会影响到被拷贝对象
+
+      // 2. (复杂数据类型赋值)深拷贝: 把拷贝对象内数据完全复制一份给目标对象 内部存在冲突数据覆盖 否则合并
+
+      var targetObj = {
+        id: 0,
+        msg: {
+          sex: "男"
+        }
+      };
+
+      var obj = {
+        id: 1,
+        name: "andy",
+        msg: {
+          age: 18,
+          name: 'ok'
+        }
+      }
+
+      // 1. $.extend([deep], traget, object, [objectN]); 
+      // a. deep: 可选参数，true深拷贝，默认false浅拷贝
+      // b. traget: 拷贝目标
+      // c. object: 待拷贝对象
+
+      // (1) 将obj 浅拷贝给 targetObj 会覆盖原来的数据
+      // $.extend(targetObj, obj);
+
+      // (2) 将obj 深拷贝给 targetObj 会覆盖原来的数据
+      $.extend(true, targetObj, obj);
+
+      // 修改浅\深拷贝后的数据属性值
+      targetObj.name = "chen";
+      targetObj.msg.name = "fen g";
+
+      // 浅拷贝: 发现msg中的name一起被修改了，而且目标拷贝中的msg被完全覆盖
+      // 深拷贝: 发现只有目标对象中的name + msg.name 被修改了，而且保留了原始的msg.sex
+      console.log("拷贝对象", obj);
+      console.log("目标对象", targetObj);
+    })
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

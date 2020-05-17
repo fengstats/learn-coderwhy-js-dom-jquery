@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12.多库共存</title>
+  <script src="jquery.js"></script>
+  <script>
+    $(function () {
+      // 自己封装一个简单的 $选择器
+      function $(ele) {
+        return document.querySelector(ele);
+      }
+
+      console.log($("div"));
+
+
+      // 多库共存
+      // 问题概述: jQuery使用$作为标识符，随着jQuery的流行，其它js库也会使用$作为标识符，这样在一起使用时就会产生冲突，如何解决冲突?
+
+      // 客观需求：需要一个解决方案，让jQuery与其它js库不存在冲突，可以同时存在，这就叫多库共存
+
+      // jQuery解决方案:
+      // (1) 将$换成jQuery
+      jQuery.each();
+
+      // (2) $.noConflict() 用户自定义选择器
+      var profile = jQuery.noConflict();
+      console.log(profile("span"));
+
+    })
+  </script>
+</head>
+
+<body>
+  <div></div>
+  <span>我是span标签</span>
+</body>
+
+</html>

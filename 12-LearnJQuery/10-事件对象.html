@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10-事件对象</title>
+  <script src="jquery.js"></script>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+  </style>
+  <script>
+    $(function () {
+      $(document).on("click", function () {
+        console.log("docment也被点击了");
+      })
+
+      $("div").on("click", function (event) {
+        console.log(event);
+        // a. 阻止默认行为 preventDefault() 或者 return false
+        // b. 阻止冒泡 stopPropagation()
+        // 这样就不会冒泡到document上了
+        event.stopPropagation();
+      })
+
+
+    })
+  </script>
+</head>
+
+<body>
+  <div></div>
+</body>
+
+</html>
