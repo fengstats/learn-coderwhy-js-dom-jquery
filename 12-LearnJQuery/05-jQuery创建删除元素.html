@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05-jQuery创建删除元素</title>
+  <script src="jquery.js"></script>
+</head>
+
+<body>
+  <ul>
+    <li>原先的li</li>
+  </ul>
+
+  <div class="test">我是原先的div</div>
+</body>
+<script>
+  // 1. 创建元素
+  var li = $('<li>我是后来创建的li</li>');
+  var li2 = $('<li>我是后来创建的li2</li>');
+
+  var div = $('<div>我是后妈生的</div>');
+  var div2 = $('<div>我是亲妈生的</div>');
+
+  // 2. 添加元素
+  // a. 内部添加
+  // el.append(element): 将element的元素放到el元素子元素后面
+  $('ul').append(li);
+  // el.preped(element): 将element的元素放到el元素子元素前面
+  $('ul').prepend(li2);
+
+  // b. 外部添加
+  $('.test').after(div);
+  $('.test').before(div2);
+
+  // 3. 删除元素
+  // remove(); 删除匹配元素(本身)
+  $("ul").remove();
+  // empty();  删除匹配元素集合中的所有子节点(标签还在，针对孩子)
+  $('div').eq(0).empty();
+  // html('');   清空匹配元素内容(标签还在，针对孩子)
+  $('div').eq(1).html('');
+
+</script>
+
+</html>

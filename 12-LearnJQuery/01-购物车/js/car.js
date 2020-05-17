@@ -1,17 +1,10 @@
 $(function () {
   // 元素获取
-  var checkall = $(".checkall");
-  var checkbox = $(".j-checkbox");
-  var numInput = $(".itxt");
-  var addBtn = $(".increment");
-  var decBtn = $(".decrement");
   var countAll = $(".amount-sum em");
-  var singlePrice = $(".p-sum");
   var countPrice = $('.price-sum em');
-  var checkboxLen = checkbox.length;
   // 1. 全选 全不选 功能模块
   // a. 将全选按钮状态(checked)赋值给三个小按钮(j-checkbox)就可以了 事件可以使用 change 
-  checkall.change(
+  $(".checkall").change(
     function () {
       var checkedState = $(this).prop("checked");
       $(".j-checkbox, .checkall").prop("checked", checkedState);
@@ -20,23 +13,23 @@ $(function () {
 
 
   // 2. 复选框全部选上时，全选选上，否则不做处理
-  checkbox.change(function () {
+  $(".j-checkbox").change(function () {
     var len = $(".j-checkbox:checked").length;
     console.log("被选中的复选框个数为", len);
-    console.log("总复选框个数为", checkboxLen);
-    if (len == checkboxLen) {
+    console.log("总复选框个数为", $(".j-checkbox").length);
+    if (len == $(".j-checkbox").length) {
       // 被选中的复选框个数 等于 购物车内复选框总个数: 选中全选
-      checkall.prop("checked", true);
+      $(".checkall").prop("checked", true);
     } else {
       // 否则 不选
-      checkall.prop("checked", false);
+      $(".checkall").prop("checked", false);
     }
   })
 
 
   // 3. 增减商品数量模块 首先声明一个变量
   // a. 当我们点击+号(increment) 就让这个值++，然后赋值给文本框
-  addBtn.click(
+  $(".increment").click(
     function () {
       var n = $(this).siblings('.itxt').val();
       n++;
@@ -47,7 +40,7 @@ $(function () {
     }
   )
   // b. 当我们点击-号(increment) 就让这个值--，然后赋值给文本框
-  decBtn.click(
+  $(".decrement").click(
     function () {
       var n = $(this).siblings('.itxt').val();
       if (n == 1) {
@@ -78,7 +71,7 @@ $(function () {
 
 
   // 5. 用户直接修改文本框的值 计算 小计模块
-  numInput.change(
+  $('.itxt').change(
     function () {
       var n = $(this).val();
       console.log(n);
@@ -100,18 +93,45 @@ $(function () {
     // 计算总价钱
     var money = 0;
 
-    numInput.each(function (i, ele) {
+
+
+    $('.itxt').each(function (i, ele) {
+      console.log(i, ele);
       // 获取总件数
       count += parseInt($(ele).val());
     })
 
-    singlePrice.each(function (i, ele) {
+    $('.p-sum').each(function (i, ele) {
       money += parseFloat($(ele).text().substr(1));
     })
+
+    console.log(count, money);
 
     countAll.text(count);
     countPrice.text("￥" + money.toFixed(2));
   }
 
+
+  // 7. 删除购物车商品
+  // a. 商品后面的删除按钮
+  $('.p-action a').click(function () {
+    // 删除的是当前商品
+    $(this).parents('.cart-item').remove();
+    getSum();
+  })
+
+  // b. 删除选中商品
+  $('.remove-batch').click(function () {
+    // 删除被选中的商品
+    $('.j-checkbox:checked').parents('.cart-item').remove();
+    getSum();
+  })
+
+  // c. 清空购物车 删除全部商品
+  $('.clear-all').click(function () {
+    console.log('ok');
+    $('.cart-item').remove();
+    getSum();
+  })
 
 })
