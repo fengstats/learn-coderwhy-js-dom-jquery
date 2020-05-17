@@ -2,8 +2,12 @@ $(function () {
   // 元素获取
   var checkall = $(".checkall");
   var checkbox = $(".j-checkbox");
+  var numInput = $(".itxt");
   var addBtn = $(".increment");
   var decBtn = $(".decrement");
+  var countAll = $(".amount-sum em");
+  var singlePrice = $(".p-sum");
+  var countPrice = $('.price-sum em');
   var checkboxLen = checkbox.length;
   // 1. 全选 全不选 功能模块
   // a. 将全选按钮状态(checked)赋值给三个小按钮(j-checkbox)就可以了 事件可以使用 change 
@@ -69,11 +73,12 @@ $(function () {
     price = price.substr(1);
     // c. 设置商品小计 toFixed(n): 保留n位小数 
     parentPnum.siblings(".p-sum").html("￥" + (price * n).toFixed(2));
+    getSum();
   }
 
 
   // 5. 用户直接修改文本框的值 计算 小计模块
-  $(".itxt").change(
+  numInput.change(
     function () {
       var n = $(this).val();
       console.log(n);
@@ -84,6 +89,29 @@ $(function () {
       getNum($(this), n);
     }
   )
+
+
+  // 6. 计算总计 总额
+  // 在进入购物车之前先调用一次
+  getSum();
+  function getSum() {
+    // 计算总件数
+    var count = 0;
+    // 计算总价钱
+    var money = 0;
+
+    numInput.each(function (i, ele) {
+      // 获取总件数
+      count += parseInt($(ele).val());
+    })
+
+    singlePrice.each(function (i, ele) {
+      money += parseFloat($(ele).text().substr(1));
+    })
+
+    countAll.text(count);
+    countPrice.text("￥" + money.toFixed(2));
+  }
 
 
 })
