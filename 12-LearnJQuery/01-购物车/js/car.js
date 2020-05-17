@@ -8,6 +8,13 @@ $(function () {
     function () {
       var checkedState = $(this).prop("checked");
       $(".j-checkbox, .checkall").prop("checked", checkedState);
+
+      // 全选添加 否则删除 (背景颜色)
+      if (checkedState) {
+        $(".j-checkbox").parents('.cart-item').addClass("check-cart-item");
+      } else {
+        $(".j-checkbox").parents('.cart-item').removeClass("check-cart-item");
+      }
     }
   )
 
@@ -23,6 +30,13 @@ $(function () {
     } else {
       // 否则 不选
       $(".checkall").prop("checked", false);
+    }
+
+    // 如果当前复选框选中了 将当前复选框的car-item添加背景颜色
+    if ($(this).prop("checked")) {
+      $(this).parents('.cart-item').addClass("check-cart-item");
+    } else {
+      $(this).parents('.cart-item').removeClass("check-cart-item");
     }
   })
 
@@ -133,5 +147,9 @@ $(function () {
     $('.cart-item').remove();
     getSum();
   })
+
+
+  // 7. 选中商品后添加背景颜色
+
 
 })
