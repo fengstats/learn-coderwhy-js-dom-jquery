@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06-事件处理on</title>
+  <script src="jquery.js"></script>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+
+
+    .current {
+      background-color: salmon;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <ul>
+    <li>我们都是ul的孩子</li>
+    <li>我们都是ul的孩子</li>
+    <li>我们都是ul的孩子</li>
+    <li>我们都是ul的孩子</li>
+    <li>我们都是ul的孩子</li>
+  </ul>
+  <script>
+    $(function () {
+      // 1. 单个事件注册
+      // a. 点击
+      // $("div").click(function () {
+      //   $(this).css("background", "purple");
+      // })
+
+      // // b. 经过
+      // $("div").hover(function () {
+      //   $(this).css("background", "skyblue");
+      // })
+
+
+      // 2. 事件处理on
+      // a. 多次事件触发写在一起
+      // $("div").on({
+      //   mouseenter: function () {
+      //     $(this).css("background", "skyblue");
+      //   },
+      //   click: function () {
+      //     $(this).css("background", "purple");
+      //   },
+      //   mouseleave: function () {
+      //     $(this).css("background", "blue");
+      //   }
+      // })
+
+      // b. 鼠标经过与离开: 添加与删除
+      $("div").on("mouseenter mouseleave", function () {
+        $(this).toggleClass('current');
+      })
+
+
+      // 3. on可以实现事件委托(事件委派)
+      // $("ul li").click(); // 给每一个li标签都隐式的绑定了click事件 太繁琐了
+      $("ul").on("click", "li", function () {
+        // 1. 事件是绑定在ul上的
+        // 2. 但是触发对象是li标签
+        // 3. 点击li标签后 因为ul绑定了点击事件 所以会冒泡到ul上
+        console.log($(this).index());
+      });
+
+
+      // 4. on也可以给动态创建的元素添加绑定事件
+      var ol = $("<ol></ol>");
+      $('body').append(ol);
+
+      // a. 使用click事件 发现无法绑定
+      // $('ol li').click(function() {
+      //   alert("绑定成功");
+      // })
+
+      // b. 使用on绑定
+      $("ol").on("click", "li", function () {
+        alert("绑定成功");
+      });
+
+      var li = $('<li>我是后来创建的li标签</li>')
+      ol.append(li);
+    })
+  </script>
+</body>
+
+</html>
