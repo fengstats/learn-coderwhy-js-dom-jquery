@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08-事件解绑off</title>
+  <script src="jquery.js"></script>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <ul>
+    <li>我们还是好孩子</li>
+    <li>我们还是好孩子</li>
+    <li>我们还是好孩子</li>
+    <li>我们还是好孩子</li>
+    <li>我们还是好孩子</li>
+  </ul>
+  <script>
+    $(function () {
+      // 绑定事件
+      $("div").on({
+        click: function () {
+          console.log("点击事件触发了");
+        },
+
+        mouseover: function () {
+          console.log("鼠标经过了");
+          $(this).css("background", "blue");
+        }
+      })
+      // 事件委托
+      $("ul").on("click", "li", function () {
+        alert("okokok");
+      })
+
+      // 解除绑定
+      // 1. off() 解除所有事件
+      // $("div").off();
+
+      // 2. off("click") 解除点击事件
+      $("div").off("click");
+
+      // 3. off("click", "li") 解除在li标签上的事件委托
+      $("ul").off("click", "li");
+
+      // 4. one() 与on相似 但是有且只能够触发一次
+      $("div").one("click", function () {
+        $(this).css("background", "purple");
+      })
+    })
+  </script>
+</body>
+
+</html>
