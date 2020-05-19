@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07-jQuery尺寸操作</title>
+  <script src="jquery.js"></script>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      padding: 10px;
+      margin: 20px;
+      border: 10px solid red;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <script>
+    $(function () {
+      // 1. width() / height() 
+      console.log("(1) width() / height() 单纯就是本身宽度与高度 不包含其它");
+      console.log("div宽度", $("div").width() + "\n\n");
+      // height(number); 修改尺寸
+      $("div").height(300);
+
+      // 2. innerWidth() / innerHeight() 
+      console.log("(2) innerWidth() / innerHeight() 包含padding");
+      console.log("div宽度", $("div").innerWidth());
+      console.log("div高度", $("div").innerHeight() + "\n\n");
+
+      // 3. outerWidth() / outerHeight() 
+      console.log("(3) outerWidth() / outerHeight() 包含padding + border");
+      console.log("div宽度", $("div").outerWidth());
+      console.log("div高度", $("div").outerHeight() + "\n\n");
+
+      // 4. outerWidth(true) / outerHeight(true) 
+      console.log("(4) outerWidth(true) / outerHeight(true) 包含padding + border + margin");
+      console.log("div宽度", $("div").outerWidth(true));
+      console.log("div高度", $("div").outerHeight(true) + "\n\n");
+
+    })
+  </script>
+</body>
+
+</html>

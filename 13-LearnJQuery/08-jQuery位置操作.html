@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08-jQuery位置操作</title>
+  <script src="jquery.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .father {
+      position: relative;
+      width: 400px;
+      height: 200px;
+      margin: 100px auto;
+      background-color: pink;
+    }
+
+    .son {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      margin-left: 100px;
+      background-color: salmon;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="father">
+    <div class="son"></div>
+  </div>
+  <script>
+    $(function () {
+      // 1. offset() 获取设置 距离文档(document)的位置
+      // 只能够获取当前元素距离文档的x y坐标
+      console.log("1. offset() 获取设置 距离文档(document)的位置");
+      console.log($(".son").offset());
+      console.log("offset().top(距离文档顶部): ", $(".son").offset().top);
+      console.log("offset().left(距离文档左侧): ", $(".son").offset().left + "\n\n");
+
+      // 设置
+      $(".son").offset({
+        top: 20,
+      })
+
+
+      // 2. position() 用于返回被选元素带有定位的父级位置，如果没有定位以文档为准
+      console.log("2. position() 用于返回被选元素带有定位的父级位置，如果没有定位以文档为准");
+      console.log("只能获取不能设置");
+      console.log($(".son").position());
+      console.log("position().top(距离文档顶部): ", $(".son").position().top);
+      console.log("position().left(距离文档左侧): ", $(".son").position().left + "\n\n");
+
+
+    })
+  </script>
+</body>
+
+</html>
