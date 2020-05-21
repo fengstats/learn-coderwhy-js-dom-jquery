@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11-链式编程</title>
+  <script src="jquery.js"></script>
+</head>
+
+<body>
+  我是body的文字
+  <button>快速</button>
+  <button>快速</button>
+  <button>快速</button>
+  <button>快速</button>
+  <button>快速</button>
+  <button>快速</button>
+  <script>
+    $(function () {
+      // 1. 隐式迭代 给所有按钮绑定点击事件
+      $("button").click(function () {
+        // a. 让当前元素颜色变为红色
+        // $(this).css("color", "red");
+        // b. 让其它元素不变色
+        // $(this).siblings().css("color", "");
+
+        // c. 简写: 我变色 兄弟不变
+        // $(this).css("color", "red").siblings().css("color", "");
+
+        // d. 给兄弟的父亲添加颜色
+        $(this).siblings().parent().css("color", "blue");
+      })
+    })
+  </script>
+</body>
+
+
+</html>
