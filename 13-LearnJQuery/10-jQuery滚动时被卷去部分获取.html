@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10-jQuery滚动时被卷去部分获取</title>
+  <script src="jquery.js"></script>
+  <style>
+    .container {
+      width: 80%;
+      height: 500px;
+      margin: 500px auto;
+      background-color: skyblue;
+    }
+
+    .back {
+      display: none;
+      position: fixed;
+      right: 10px;
+      bottom: 200px;
+      width: 40px;
+      text-align: center;
+      background-color: cadetblue;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="back">返回顶部</div>
+  <div class="container">
+  </div>
+  <script>
+    $(function () {
+      // 1. 页面被卷去的头部 scrollTop / 被卷去的左侧 scrollLeft
+      // 传参设置: 在打开或者刷新时设置距离顶部200像素位置
+      $(document).scrollTop(200);
+      // 页面滚动事件监听
+      // a. 获取中心盒子距离文档顶部距离
+      var boxTop = $(".container").offset().top;
+      $(window).scroll(function () {
+        // b. 判断滚动时是否达到此距离
+        // console.log("页面滚动中...", boxTop);
+        // console.log($(document).scrollTop(), boxTop);
+        if (boxTop <= $(document).scrollTop()) {
+          console.log("已达到");
+          $(".back").fadeIn();
+        } else {
+          console.log("回去了");
+          $(".back").fadeOut();
+        }
+      })
+
+      // 2. 点击back时返回顶部
+      $(".back").click(function () {
+        // $(document).scrollTop(0);
+
+        // animate() 动画: 针对元素 不能够直接写document文档
+        $("body, html").stop().animate({
+          scrollTop: 0
+        });
+      })
+    })
+  </script>
+</body>
+
+</html>
