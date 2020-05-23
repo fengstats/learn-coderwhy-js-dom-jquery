@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05-ES6中类的三个注意事项</title>
+</head>
+
+<body>
+
+  <button>点击唱歌</button>
+  <script>
+    // 1. 因为ES6中类没有变量提升，所以必须先定义类，才能通过类实例化对象
+    // var ldh = new Star("刘德华"); // Cannot access 'Star' before initialization
+
+    var that;
+    var _that;
+    class Star {
+      /* 初始化构造函数 */
+      constructor(uname, age) {
+        this.uname = uname;
+        this.age = age;
+
+        // 在初始化函数的时候调用内部方法
+        // this.sing();
+
+        // 按钮点击后，调用内部唱歌方法
+        this.btn = document.querySelector("button");
+        this.btn.onclick = this.sing;
+
+        // 3. 在初始化函数中this的指向?
+        // console.log(this);  // Star对象
+        that = this;
+      }
+
+      /* 唱歌的方法 */
+      sing() {
+        // 因为this在方法中的指向是遵循谁调用 指向谁 当这个方法被btn按钮调用后就自然会指向btn
+        console.log(this);
+        // 这时btn内部没有 uname 这个属性名 所以返回值为 undefined
+        // 使用全局变量that就可以实现变量共享 ps: that内部存储的是constructor中的this 指向ldh对象
+        console.log("我在唱歌", "我是" + that.uname);
+      }
+
+      /* 测试this指向方法 */
+      dance() {
+        // dance里面的this指向的是实例对象ldh 因为ldh调用了这个函数
+        _that = this;
+        // console.log(this);  // Star 对象
+      }
+    }
+
+    // a. 在定义类后，实例化对象
+    var ldh = new Star("刘德华");
+    ldh.sing();
+
+
+    // 2. 在类中所有的属性或者方法 需要添加this使用
+
+
+    // 3. this的指向问题
+    ldh.dance();
+    console.log(that === ldh); // 内部constructor函数指向为创建后的实例对象
+    console.log(_that === ldh); // 内部通用方法指向为创建后的实例对象
+
+  </script>
+</body>
+
+</html>
