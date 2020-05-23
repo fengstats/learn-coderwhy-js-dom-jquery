@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-ES6中的类与对象</title>
+</head>
+
+<body>
+  <script>
+
+    // 写在前面:
+    // (1) 通过class关键字创建类，类名习惯性定义首字母大写
+    // (2) 类里面右 constructor 函数，可以接收new 实例时传递过来的参数，同时返回实例对象
+    // (3) constructor 函数不写会自动生成
+    // (4) 生成实例 new 关键字不能省略
+    // (5) 最后注意语法规范，创建类，类名后面不要加上()，new 实例后面添加()，构造函数不需要加上function关键字
+    // (6) 在类中，多个函数不需要使用逗号分隔
+
+    // 1. 创建类 class Name{属性与方法}
+    class Star {
+      constructor(uname) {
+        this.uname = uname;
+      }
+      sing(name) {
+        return this.uname + "会唱" + name
+      }
+    }
+
+    // 2. 利用类创建对象 new Name()
+    var ldh = new Star("刘德华");
+    var zhy = new Star("张学友");
+
+    // 3. 获取类属性
+    console.log(ldh.uname);
+    console.log(zhy.uname);
+
+    // 4. 调用类方法
+    console.log(ldh.sing("冰雨"));
+    console.log(zhy.sing("李香兰"));
+
+
+  </script>
+</body>
+
+</html>

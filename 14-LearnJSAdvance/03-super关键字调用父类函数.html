@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03-super关键字调用父类函数</title>
+</head>
+
+<body>
+  <script>
+
+    // 写在前面:
+    // 1. 继承中，如果实例化子类输出一个方法，先看子类，有执行，否则看父类，有执行，否则不执行
+
+
+    // super调用函数
+
+    class Father {
+      say() {
+        return "我是爸爸";
+      }
+    }
+
+    class Son extends Father {
+      say() {
+        // console.log("我是儿子");
+        // super.函数(): 调用服了的普通函数
+        console.log(super.say() + '的儿子');
+      }
+    }
+
+    var son = new Son();
+    son.say()
+  </script>
+</body>
+
+</html>
