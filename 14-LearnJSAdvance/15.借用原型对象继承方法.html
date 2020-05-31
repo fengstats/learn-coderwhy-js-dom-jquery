@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>15.借用原型对象继承方法</title>
+</head>
+
+<body>
+  <script>
+    // 借用父构造函数继承属性
+    // 1. 父构造函数
+    function Father(uname, age) {
+      // this指向父够赞函数的对象实例
+      this.uname = uname;
+      this.age = age;
+    }
+
+    // 原型对象: 共有方法
+    Father.prototype.money = function () {
+      console.log(1000000);
+    }
+
+
+    // 2. 子构造函数
+    function Son(uname, age, score) {
+      // this指向子构造函数的对象实例
+
+      // 子构造函数继承父构造函数属性
+      // 将父构造函数的this指向改成子构造函数的this指向
+      Father.call(this, uname, age);
+      // 子类独有属性
+      this.score = score;
+    }
+
+    // (1) 直接将父构造函数原型给子构造函数原型：这种方法直接赋值会存在问题，如果修改了子原型对象，父原型对象也会跟着一起变化
+    // Son.prototype = Father.prototype;
+
+    // (2) 
+    Son.prototype = new Father();
+    // 如果利用了对象的形式修改了原型对象，别忘了利用constructor 指回原来的构造函数
+    Son.prototype.constructor = Son;
+    Son.prototype.exam = function () {
+      console.log("考试了");
+    }
+
+    var son = new Son("刘德华", 19, 100);
+
+    console.log("子构造函数", son);
+    console.log("父构造函数原型", Father.prototype);
+    console.log("子构造函数原型", Son.prototype.constructor);
+
+  </script>
+</body>
+
+</html>
