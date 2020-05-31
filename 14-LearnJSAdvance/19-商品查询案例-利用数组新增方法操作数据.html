@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>19-商品查询案例-利用数组新增方法操作数据</title>
+  <style>
+    table {
+      width: 400px;
+      border: 1px solid #000;
+      border-collapse: collapse;
+      margin: 0 auto;
+    }
+
+    td,
+    th {
+      border: 1px solid #000;
+      text-align: center;
+    }
+
+    input {
+      width: 50px;
+    }
+
+    .search {
+      width: 600px;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="search">
+    按照价格查询: <input type="text" class="start"> - <input type="text" class="end"> <button class="search-price">搜索</button>
+    按照商品名称查询: <input type="text" class="product"> <button class="search-pro">查询</button>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>产品名称</th>
+        <th>价格</th>
+      </tr>
+    </thead>
+    <tbody>
+
+
+    </tbody>
+  </table>
+  <script>
+    // 利用新增数组方法操作数据
+    var data = [{
+      id: 1,
+      pname: '小米',
+      price: 3999
+    }, {
+      id: 2,
+      pname: 'oppo',
+      price: 999
+    }, {
+      id: 3,
+      pname: '荣耀',
+      price: 1299
+    }, {
+      id: 4,
+      pname: '华为',
+      price: 1999
+    },];
+    // 1. 获取相应的元素
+    var tbody = document.querySelector('tbody');
+    // a. 价钱查询按钮
+    var search_price = document.querySelector('.search-price');
+    // 开始价钱
+    var start = document.querySelector('.start');
+    // 结束价钱
+    var end = document.querySelector('.end');
+    // b. 名称查询按钮
+    var search_pro = document.querySelector('.search-pro');
+    // 产品名称
+    var product = document.querySelector('.product');
+
+    // 进入页面时的渲染
+    setData(data);
+
+    // 2. 将数据渲染到页面中
+    function setData(myData) {
+      // 先清空原来的数据
+      tbody.innerHTML = '';
+
+      myData.forEach(function (value) {
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<td>' + value.id + '</td><td>' + value.pname + '</td><td>' + value.price + '</td>'
+        tbody.appendChild(tr);
+      })
+    }
+
+    // 3. 根据价格区间查询相应数据
+    search_price.addEventListener('click', function () {
+      // console.log("点击成功");
+      var newData = data.filter(function (value) {
+        return value.price >= start.value && value.price <= end.value;
+      });
+
+      console.log(newData);
+      // 渲染页面
+      setData(newData);
+    })
+
+    // 4. 根据商品名称查询: 查询数组中唯一的元素，用some方法更合适，因为它找到这个元素，就不在进行循环，效率更高
+    search_pro.addEventListener('click', function () {
+      // console.log("点击成功");
+      var arr = [];
+      var flag = data.some(function (value) {
+        if (value.pname === product.value) {
+          console.log(value);
+          arr.push(value);
+          return true;
+        }
+      });
+
+      // 渲染页面
+      setData(arr);
+    })
+
+
+  </script>
+</body>
+
+</html>

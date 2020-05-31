@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>20-forEach与some的区别</title>
+</head>
+
+<body>
+  <script>
+    var arr = ['red', 'green', 'blue', 'pink'];
+    // 1. forEach迭代 遍历
+    if (false) {
+      arr.forEach(function (value) {
+        if (value == 'green') {
+          console.log("green元素被找到了");
+          return true;
+        }
+        // 使用return后 程序依旧会继续执行
+        console.log("程序执行后...");
+      })
+    }
+
+
+    // 2. some迭代 效率更高
+    arr.some(function (value) {
+      if (value == 'green') {
+        console.log("green元素被找到了");
+        return true;
+      }
+      // 使用return后 程序停止遍历
+      console.log("程序执行后...");
+    })
+  </script>
+</body>
+
+</html>

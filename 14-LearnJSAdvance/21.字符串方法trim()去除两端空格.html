@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>21.字符串方法trim()去除两端空格</title>
+</head>
+
+<body>
+
+  <input type="text" name="" id=""> <button>点击</button>
+  <div></div>
+
+  <script>
+    // 作用：去除左右两端空白字符
+    // 返回；新字符串
+    var str = '   an dy   ';
+    console.log("原字符串\n[" + str + "]");
+    var str1 = str.trim();
+    console.log("去除空格后字符串\n[" + str1 + "]");
+
+    // 1. 可应用场景 表单提交时的为空判断
+    var input = document.querySelector('input');
+    var btn = document.querySelector('button');
+    var div = document.querySelector('div');
+    btn.onclick = function () {
+      // 使用trim去除左右两端空白字符
+      var content = input.value.trim();
+      if (content === '') {
+        alert('请输入内容');
+      } else {
+        div.innerHTML = content;
+      }
+    }
+  </script>
+</body>
+
+</html>
