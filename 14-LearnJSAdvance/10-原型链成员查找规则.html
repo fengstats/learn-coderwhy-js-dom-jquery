@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10-原型链成员查找规则</title>
+</head>
+
+<body>
+  <script>
+    function Star(uname, age) {
+      this.uname = uname;
+      this.age = age;
+    }
+
+    Star.prototype.sing = function () {
+      console.log("我会唱歌");
+    }
+
+    Object.prototype.sex = "中性";
+    // Star.prototype.sex = "女";
+
+    var ldh = new Star("刘德华", 18);
+    // ldh.sex = "男";
+
+    console.log(ldh.sex);
+    // JavaScript的成员查找机制(规则)
+    // 1. 当访问一个对象属性(包括方法)，首先查找这个对象自身有没有该属性
+    // 2. 如果没有，查找它的原型(也就是__proto__指向的prototype原型对象)
+    // 3. 如果还没有，那就查找原型对象的原型(Object的原型对象)
+    // 4. 一次类推一直找到Object位置(null)
+    // 总结: __proto__ 对象原型的意义就在于为对象成员查找提供一个方向，后者说一条线路
+
+  </script>
+</body>
+
+</html>

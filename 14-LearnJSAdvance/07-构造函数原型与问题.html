@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>构造函数原型与问题</title>
+</head>
+
+<body>
+  <script>
+    // 1. 构造函数的问题 
+    function Star(uname, age) {
+      this.uname = uname;
+      this.age = age;
+    }
+
+    // prototype: 原型对象(共享方法)，JavaScript规定，每一个构造函数都会有一个prototype属性，指向一个对象
+    // 我们可以把那些不变的方法，直接定义在prototype对象上，这样所有的对象实例就可以实现方法共享，不必开辟内存空间
+    Star.prototype.sing = function () {
+      console.log("我会唱歌");
+    }
+
+    // 2. 创建对象
+    var ldh = new Star('刘德华', 32);
+    var zxy = new Star('张学友', 42);
+
+    ldh.sing();
+    zxy.sing();
+
+
+    // 存储的内存地址是不一样的 复杂数据类型会去单独开辟一个空间 (没有使用prototype之前)
+    // console.log(ldh.sing === zxy.sing); // false
+
+    // (使用之后为true) 因为引用的都是一个对象
+
+    console.dir(Star);
+
+
+  </script>
+</body>
+
+</html>
