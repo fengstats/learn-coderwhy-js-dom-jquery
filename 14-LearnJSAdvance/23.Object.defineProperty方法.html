@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>23.Object.defineProperty方法</title>
+</head>
+
+<body>
+  <script>
+    // 1. Object.definePorperty()
+    var obj = {
+      id: 1,
+      name: '小米',
+      price: 1888,
+      num: 2000
+    }
+
+    // 之前对象新增一个属性
+    if (false) {
+      // 新增
+      obj.num = 99;
+      // 修改
+      obj.num = 1000;
+      console.log(obj);
+    }
+
+
+    // 2.Object.defineProperty()
+    // 作用：重新定义对象中属性
+    /* 
+    参数1：obj       要操作的对象
+    参数2：attribute 要修改的属性
+    参数3：descriptor 说明 以对象形式{
+      value: 修改值,
+      writable: false,   // 是否允许重写 默认不允许
+      enumerable: false, // 是否允许遍历 默认不允许
+      configurable: false, // 是否允许删除 默认不允许
+    }书写
+    */
+
+    // (1) value: 没有就新增
+    Object.defineProperty(obj, 'num', {
+      value: 1000
+    })
+
+    // (2) value: 存在就修改
+    Object.defineProperty(obj, 'num', {
+      value: 2000
+    })
+
+    // (3) writable: false 设置不允许修改
+    Object.defineProperty(obj, 'id', {
+      writable: false
+    })
+
+    Object.defineProperty(obj, 'address', {
+      value: '中国山东蓝翔技校xxx学院',
+      // enumerable 默认为 false 不允许遍历
+      enumerable: false,
+      // configurable 默认为 false 不允许删除
+      configurable: false
+    })
+
+    // 因为设置writable为false 所以修改无效
+    obj.id = 2;
+
+    console.log(obj);
+    console.log(Object.keys(obj));
+
+    // configurable为false 不可删除
+    delete obj.address;
+    console.log(obj);
+
+    // 原有属性 可删除
+    delete obj.name;
+    console.log(obj);
+  </script>
+</body>
+
+</html>
