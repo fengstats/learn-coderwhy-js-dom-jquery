@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12-扩展内置对象方法</title>
+</head>
+
+<body>
+  <script>
+    // 1. 扩展内置对象方法：原型对象应用，添加数组求和方法
+    console.log(Array.prototype);
+
+
+    // ！！！注意 在数组合字符串的内置对象中不能给原型对象覆盖操作 Array.prototype = {}
+    // 只能是 Array.prototype.xxx = function() {} 的形式
+    Array.prototype.sum = function () {
+      var sum = 0;
+      for (var i = 0; i < this.length; i++) {
+        sum += this[i];
+      }
+      return sum;
+    }
+
+    var arr1 = [1, 2, 3, 4];
+    console.log("arr1总和", arr1.sum());
+
+    var arr2 = new Array(11, 22, 33);
+    console.log("arr2总和", arr2.sum());
+
+  </script>
+</body>
+
+</html>

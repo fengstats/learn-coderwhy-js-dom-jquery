@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11-原型对象中this指向问题</title>
+</head>
+
+<body>
+  <script>
+    function Star(uname, age) {
+      this.uname = uname;
+      this.age = age;
+    }
+
+    Star.prototype.sing = function () {
+      console.log("我会唱歌");
+      that = this;
+    }
+
+    var ldh = new Star("刘德华", 18);
+
+    // 1. 在构造函数中，里面this指向是对象实例 ldh
+    ldh.sing();
+
+    // 2. 原型对象函数里面的this指向也是实例对象 ldh
+    console.log(that === ldh);
+  </script>
+</body>
+
+</html>
