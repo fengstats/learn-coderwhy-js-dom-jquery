@@ -37,7 +37,7 @@
       // (1) 将obj 浅拷贝给 targetObj 会覆盖原来的数据
       // $.extend(targetObj, obj);
 
-      // (2) 将obj 深拷贝给 targetObj 会覆盖原来的数据
+      // (2) 将obj 深拷贝给 targetObj 不会覆盖原来的数据
       $.extend(true, targetObj, obj);
 
       // 修改浅\深拷贝后的数据属性值
