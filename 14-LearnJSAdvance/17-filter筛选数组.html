@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>17-filter筛选数组</title>
+</head>
+
+<body>
+  <script>
+    // 1. filter 筛选数组
+    // 返回: 一个新数组
+    var arr = [12, 33, 43, 5, 34];
+    /* (1) 将数组中大于20的数选取出来 */
+    // 因为返回新数组 所以需要一个数组接收
+    var newArr = arr.filter(function (value, index, array) {
+      // 参数列表与 forEach 相同
+      return value >= 20;
+    })
+
+    /* (2) 将数组中的偶数选取出来 */
+    var newArr2 = arr.filter(function (value, index, array) {
+      // 参数列表与 forEach 相同
+      return value % 2 === 0;
+    })
+
+    console.log("元素大于20的数组", newArr);
+    console.log("元素为偶数的数组", newArr2);
+
+  </script>
+</body>
+
+</html>

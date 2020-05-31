@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>16-forEach方法遍历</title>
+</head>
+
+<body>
+  <script>
+    // forEach 迭代(遍历) 数组
+    var arr = ["我是1", "我是2", "我是3"];
+    arr.forEach(function (value, index, array) {
+      /* 
+      value: 每一个数组元素
+      index: 每一个数组元素索引号
+      array: 数组本身
+      */
+      console.log(value);
+      console.log(index);
+      console.log(array);
+    });
+
+    // 2. 数组求和
+    var sum = 0;
+    var arr2 = [1, 2, 3, 4, 5];
+    arr2.forEach(function (value, index, array) {
+      sum += value;
+    })
+    console.log("\narr2数组总合", sum);
+
+
+  </script>
+</body>
+
+</html>
