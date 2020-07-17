@@ -9,10 +9,13 @@
 
 <body>
   <script>
-    // 1. some: 查找数组中是否有满足条件的元素
-    // 返回：true 或者 false
+    /** 
+      * some 
+      * @document 查找数组中是否有满足条件的元素，找到满足条件即退出，不继续查找
+      * @return   true or false
+      **/
     var arr = [1, 3, 4, 5, 6, 7];
-    /* (1) 查找数组中是否存在小于3的元素 */
+    // 1. 查找数组中是否存在小于3的元素
     var flag = arr.some(function (value) {
       // 参数列表与filter相同
       return value < 3;
@@ -21,7 +24,7 @@
 
     var arr1 = ['red', 'pink', 'blue'];
     var flag1 = arr1.some(function (value) {
-      return value == 'pink';
+      return value == 'myPink';
     })
 
     // 元素满足条件时直接退出，后续元素不进行处理

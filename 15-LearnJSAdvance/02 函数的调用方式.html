@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02 函数的调用方式</title>
+</head>
+
+<body>
+  <script>
+    // 1. 普通函数
+    function fn() {
+      console.log("[普通函数] 我被调用了");
+    }
+    fn();
+    fn.call();
+
+    // 2. 对象的方法
+    var o = {
+      sayHello: function () {
+        console.log("[对象函数] 我被调用了");
+      }
+    }
+    o.sayHello();
+
+    // 3. 构造函数
+    function Star() { };
+    new Star();
+
+    // 4. 绑定事件函数
+    // 按钮被点击后调用
+    // btn.onclick = function () { };
+
+    // 5. 定时器函数
+    // setInterval(function() {
+    //   console.log("[定时器函数] 每隔1秒钟调用一次");
+    // }, 1000)
+
+
+    // 6. 立即执行函数
+    (function () {
+      console.log("[立即执行函数] 立刻被调用");
+    })()
+  </script>
+</body>
+
+</html>

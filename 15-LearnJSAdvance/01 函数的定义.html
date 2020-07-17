@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-函数的定义和调用方式</title>
+</head>
+
+<body>
+  <script>
+    // 函数的定义放
+    // 1.[命名函数] 自定义函数
+    function fn() { };
+
+    // 2.[匿名函数] 函数表达式
+    var fun = function () { };
+
+    // 3. 利用 new Function('参数1', '参数2', '函数体');
+    // 效率较低，不推荐使用，此方法只能以字符串的方式书写
+    // ！！！注意 所有函数都是 Function 的实例（对象）
+    var f = new Function('a', 'b', 'console.log(a+b)');
+    f(1, 2);
+
+    // instanceof 后者是否包含前者 或者 前者是否属于后者
+    // 由此证明函数也属于对象
+    console.dir(f);
+    console.log(f instanceof Object); // true
+  </script>
+</body>
+
+</html>

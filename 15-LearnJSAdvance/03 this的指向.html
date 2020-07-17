@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03 this的指向</title>
+</head>
+
+<body>
+  <script>
+    // [前提] 函数的不同调用方式决定了 this 的指向不同
+    // 1. 普通函数 this 指向
+    function fn() {
+      console.log("[普通函数] this指向: " + this); // window
+    }
+    fn();
+
+    // 2. 构造函数 this 指向
+    var o = {
+      sayHello: function () {
+        console.log("[对象函数] this指向: " + this); // 
+      }
+    }
+    o.sayHello();
+
+
+  </script>
+</body>
+
+</html>

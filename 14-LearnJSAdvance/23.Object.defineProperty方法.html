@@ -9,73 +9,68 @@
 
 <body>
   <script>
-    // 1. Object.definePorperty()
     var obj = {
       id: 1,
-      name: '小米',
-      price: 1888,
-      num: 2000
-    }
+      pname: "小米",
+      price: 1888
+    };
+    // 1. 老方法
+    // [旧] 通过.属性名增加
+    // obj.num = 100;
+    // [旧] 通过.属性名修改
+    // obj.price = 99;
 
-    // 之前对象新增一个属性
-    if (false) {
-      // 新增
-      obj.num = 99;
-      // 修改
-      obj.num = 1000;
-      console.log(obj);
-    }
-
-
-    // 2.Object.defineProperty()
-    // 作用：重新定义对象中属性
-    /* 
-    参数1：obj       要操作的对象
-    参数2：attribute 要修改的属性
-    参数3：descriptor 说明 以对象形式{
-      value: 修改值,
-      writable: false,   // 是否允许重写 默认不允许
-      enumerable: false, // 是否允许遍历 默认不允许
-      configurable: false, // 是否允许删除 默认不允许
-    }书写
-    */
-
-    // (1) value: 没有就新增
+    // 2. Object.defineProperty(obj, prop, descriptor);
+    // [方法说明] 定义新属性或修改原有的属性(如果属性存在修改，否则新增)
+    // [补充]  通过defineProperty所创建的属性，如果不指定writable、configurable、enumerable特性的话 默认值都是false，修改已定义的属性则无此限制
+    // [obj]  必需，目标对象(哪个对象)
+    // [prop] 必需，需定义或修改的属性的名字(哪个属性)
+    // [descriptor] 必需，目标属性所拥有的特性(已对象的形式书写)
+    // a. 新增属性num 并且指定值为1000
     Object.defineProperty(obj, 'num', {
-      value: 1000
-    })
+      value: 1000,
+      enumerable: true
+    });
 
-    // (2) value: 存在就修改
-    Object.defineProperty(obj, 'num', {
-      value: 2000
-    })
-
-    // (3) writable: false 设置不允许修改
+    // b. id一般在对象中都是唯一的，我们可以通过writable不允许修改
     Object.defineProperty(obj, 'id', {
+      // true : 允许修改这个属性值
+      // false: 不允许修改这个属性值
       writable: false
     })
+    // id不允许被重新修改 所以修改无效
+    obj.id = 0001;
 
-    Object.defineProperty(obj, 'address', {
-      value: '中国山东蓝翔技校xxx学院',
-      // enumerable 默认为 false 不允许遍历
-      enumerable: false,
-      // configurable 默认为 false 不允许删除
-      configurable: false
+    // c. 我们使用defineProperty新增一个地址属性，因为地址是个人隐私，所以我们设置参数enumrable为false，不可枚举(遍历时不显示)
+    Object.defineProperty(obj, "address", {
+      value: '中国山东找蓝翔',
+      // true : 允许枚举(遍历)
+      // false: 不允许枚举
+      enumerable: false
     })
 
-    // 因为设置writable为false 所以修改无效
-    obj.id = 2;
+    // d. 我们使用definePropetry新增一个手机号属性，手机号是我们的联系方式，是不允许被删除的，这时我们可以设置configurable为false
+    Object.defineProperty(obj, "phone", {
+      value: "13515010012",
+      enumerable: true,
+      // true : 允许被删除
+      // false: 不允许被删除+不允许再修改这个特性
+      configurable: false
+    })
+    // phone属性通过conifgurable设置 delete删除我们的phone属性无效
+    delete obj.phone
+    // pname属性是已定义的，使用delete可删除
+    delete obj.pname
 
-    console.log(obj);
+    // e. 因为phone被我们设置configurable为false 则不允许再次修改其特性，否则报错
+    // Object.defineProperty(obj, "phone", {
+    //   value: "我要修改手机号"
+    // })
+
+    // 遍历obj对象中所有属性
     console.log(Object.keys(obj));
-
-    // configurable为false 不可删除
-    delete obj.address;
     console.log(obj);
 
-    // 原有属性 可删除
-    delete obj.name;
-    console.log(obj);
   </script>
 </body>
 
