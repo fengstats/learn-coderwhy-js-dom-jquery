@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>03 this的指向</title>
+  <button>点击</button>
 </head>
 
 <body>
@@ -12,18 +13,42 @@
     // [前提] 函数的不同调用方式决定了 this 的指向不同
     // 1. 普通函数 this 指向
     function fn() {
-      console.log("[普通函数] this指向: " + this); // window
+      console.log("[普通函数] this指向 " + this); // window
     }
     fn();
+    // 完整写法
+    // window.fn();
 
-    // 2. 构造函数 this 指向
+    // 2. 对象的方法 this 指向为调用的对象
     var o = {
       sayHello: function () {
-        console.log("[对象函数] this指向: " + this); // 
+        console.log("[对象函数] this指向 " + this); // Object - o
       }
     }
     o.sayHello();
 
+    // 3. 构造函数 this 指向调用的实例对象
+    function Star() { };
+    Star.prototype.sing = function () {
+      // 原型内的函数也是指向实例对象
+    }
+    var ldh = new Star(); // 指向 ldh
+
+    // 4. 绑定事件函数 this 指向的是函数的调用者 btn这个按钮对象
+    var btn = document.querySelector('button');
+    btn.onclick = function () {
+      console.log('[绑定事件] this指向 ' + this);
+    }
+
+    // 5. 定时器函数
+    window.setTimeout(function () {
+      console.log("[定时器函数] this指向 " + this);
+    }, 1000);
+
+    // 6. 立即执行函数
+    (function () {
+      console.log("[立即执行函数] this指向 " + this);
+    })();
 
   </script>
 </body>

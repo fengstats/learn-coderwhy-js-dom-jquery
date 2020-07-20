@@ -17,15 +17,22 @@
     var fun = function () { };
 
     // 3. 利用 new Function('参数1', '参数2', '函数体');
-    // 效率较低，不推荐使用，此方法只能以字符串的方式书写
-    // ！！！注意 所有函数都是 Function 的实例（对象）
-    var f = new Function('a', 'b', 'console.log(a+b)');
-    f(1, 2);
+    // [方法说明] 不友好，执行效率低(得先将函数体中的字符串解析成js能够识别的代码，比平常js执行多了一步)
+    var f = new Function('a', 'b', 'console.log("[new Function] "+(a + b))');
+    // [参数说明]
+    // 1 --> a
+    // 2 --> b
+    // a + b = 4
+    f(1, 3);
 
-    // instanceof 后者是否包含前者 或者 前者是否属于后者
-    // 由此证明函数也属于对象
+    // 4. 所有的函数都是 Function 的实例(对象)
+    // [证明] 只要是实例/对象 内部都包含原型 __proto__
+    // 函数也属于对象
+    // 所以只要查看f函数方法内容是否包含 __proto__ 即可
+    // dir() 打印属性与方法
     console.dir(f);
-    console.log(f instanceof Object); // true
+    // instanceof 前者是否属于后者
+    console.log(f instanceof Function);
   </script>
 </body>
 
