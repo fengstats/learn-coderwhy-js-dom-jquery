@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>改变函数this指向</title>
+</head>
+
+<body>
+  <script>
+    // 改变函数内容部this指向 第三种
+    // bind(thisArg, arg1, arg2, ...);
+    // [方法说明] 返回由指定的this值和初始化参数改造的原函数拷贝
+    /* 
+    [参数说明]
+    {
+      thisArg: "函数运行时指定的this值",
+      arg1: "函数的实参1",
+      arg2: "函数的实参2"
+    }
+    */
+    var o = {
+      name: "bind"
+    }
+    function fn(a, b) {
+      console.log(this);
+      console.log(a, b);
+    }
+    // [总结]
+    // 1. 不会调用原来的函数
+    // 2. 可以改变原来函数内部的this指向
+    // 3. 返回的是原函数改变this之后产生的新函数
+    var f = fn.bind(o, 1, 2);
+    f();
+  </script>
+</body>
+
+</html>

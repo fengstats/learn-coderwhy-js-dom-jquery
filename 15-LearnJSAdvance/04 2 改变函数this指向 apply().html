@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>改变函数this指向 apply()</title>
+</head>
+
+<body>
+  <script>
+    // 改变函数内容this指向 js提供了三种方法 第二种
+    // apply(thisArg, [arg, ...])
+    // [方法说明] 应用、运用
+    /* 
+    [参数说明]
+    {
+      thisArg: "函数运行时的指定的this值",
+      [arg]  : "参数列表[数组形式]"
+    }
+    */
+    var o = {
+      name: "feng"
+    }
+
+    function fn(arr) {
+      console.log(this);
+      console.log("函数传递的数组参数", arr);
+    }
+    // 1. 调用参数、改变函数内部的this指向
+    // 2. 与call()不同之处是参数只能传递数组，不能使用字符串
+    // 3. apply 的主要应用 比如说我们可以利用 apply 借助于数学内置对象求最大值
+    // Math.max();
+    fn.apply(o, ['pink']);
+    // 数学对象: 求最大值，数组没有
+    var arr = [1, 33, 1, 10, 9];
+    var max = Math.max.apply(null, arr);
+    var min = Math.min.apply(null, arr);
+    console.log("[最大值]", max);
+    console.log("[最小值]", min);
+  </script>
+</body>
+
+</html>

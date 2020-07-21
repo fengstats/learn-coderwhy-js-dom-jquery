@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>改变函数this指向 call()</title>
+</head>
+
+<body>
+  <script>
+    // 改变函数内容this指向 js提供了三种方法 先讲第一种
+    // 1. call(thisArg, arg1, arg2)
+    /* 
+    [参数说明]
+    {
+      thisArg: "函数运行时指定的this值",
+      arg1: "函数的实参1",
+      arg2: "函数的实参2"
+    }
+     */
+    // a. 定义一个o对象
+    var o = {
+      name: 'andy'
+    }
+    // b. 定义一个普通函数
+    function fn(a, b) {
+      console.log("[fn] this指向", this);
+      console.log(a + b);
+    }
+    // c. 通过call() 改变普通函数的this指向为o对象, 第2个参数开始为实参传递
+    fn.call(o, 1, 2);
+    // 父类
+    function Father(uname, age, sex) {
+      this.uname = uname;
+      this.age = age;
+      this.sex = sex;
+    }
+    // 子类
+    function Son(uname, age, sex) {
+      // 下面这句话
+      /* 
+        首先调用了父类的构造函数
+        改变了 父类内部this指向为子类this指向
+        传递参数至父类时，因为this指向为子类，所以可以使用父类已有属性添加至子类实现继承
+       */
+      Father.call(this, uname, age, sex);
+    }
+    // [总结]
+    // (1) 可以调用函数
+    // (2) 可以改变函数内的this指向
+    // (3) 主要作用可以实现子类继承
+  </script>
+</body>
+
+</html>
