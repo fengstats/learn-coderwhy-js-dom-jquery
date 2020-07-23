@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>高阶函数 函数可以作为参数传递</title>
+  <script src="./jquery.js"></script>
+  <style>
+    div {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <script>
+    // 高阶函数
+
+    // 1. 示例
+    function fn(a, b, callback) {
+      console.log("[函数] 求值", a + b);
+      callback && callback();
+    }
+
+    fn(1, 2, function () {
+      console.log("[回调函数] 我是最后被调用的")
+    });
+
+    // 2. 让div走了一段距离后改变颜色
+    $("div").animate({
+      left: 500
+    }, function () {
+      $("div").css('backgroundColor', 'purple');
+    })
+
+  </script>
+</body>
+
+</html>
