@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>闭包引用 点击对应li标签输出索引号</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <ul class="nav">
+    <li>大茄子</li>
+    <li>大白菜</li>
+    <li>大西瓜</li>
+    <li>烤面筋</li>
+  </ul>
+  <script>
+    // 闭包应用: 点击li标签输出当前li的索引号
+    // 1. [老方法] 我们可以利用动态添加属性的方式实现
+    var lis = document.querySelector('.nav').querySelectorAll('li');
+    if (false) {
+      for (var i = 0; i < lis.length; i++) {
+        // 动态添加index属性存储下标
+        lis[i].index = i;
+        lis[i].onclick = function () {
+          // 不能直接在此输出下标
+          // a. 因为我们点击事件的funciton是一个 "异步" 任务
+          // b. 我们的for循环是一个 "同步" 任务
+          // c. 当我们触发点击事件时，for循环可能已经执行完毕，这时 i = 4
+          // console.log(i);
+
+          // 输出已经存储的下标即可
+          console.log(this.index);
+        }
+      }
+    }
+
+    // 2. [闭包方法] 
+    for (var i = 0; i < lis.length; i++) {
+      // 利用for循环创建了4个立即执行函数
+      // a. 将i作为参数传递到立即执行函数中
+      // b. 立即执行函数也称为小闭包 因为立即执行函数里面的任何一个函数都可以使用它的i这个变量
+      (function (i) {
+        // console.log(i); // 0 1 2 3
+        lis[i].onclick = function () {
+          console.log(i);
+        }
+      })(i);
+    }
+  </script>
+</body>
+
+</html>

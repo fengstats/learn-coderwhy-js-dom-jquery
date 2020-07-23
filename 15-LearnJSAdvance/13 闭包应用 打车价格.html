@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>闭包应用 打车价格</title>
+</head>
+
+<body>
+  <script>
+    // 闭包应用 计算打车价格
+    // 1. 打车起步价13元(3公里内)，之后每多一公里加5元，用户输入公里数就可以计算打车价格
+    // [注意] 如果有拥堵情况，总价格多收取10元拥堵费
+    if (false) {
+      function takeCar(km, isBlock) {
+        // 临时公里数
+        let num = 0;
+        // 起步价
+        let money = 13;
+
+        // 是否拥堵
+        if (isBlock) {
+          money += 10;
+        }
+        // 多出来的公里数价格添加
+        if (km > 3) {
+          num = km - 3;
+          money += num * 5;
+        }
+        return "[打车计算]\n\n 公里: " + km + "\n 价格: " + money + "元" + "\n 是否拥堵: " + (isBlock ? "是" : "否");
+      }
+
+      // 执行函数 获取结果
+      console.log(takeCar(103, false));
+    }
+
+    // 闭包方式完成
+    var car = (function () {
+      // 起步价
+      var money = 13;
+      // 总价
+      var total = 0;
+      return {
+        // 正常总价
+        price: function (km) {
+          if (km <= 3) {
+            total = money;
+          } else {
+            total = money + (km - 3) * 5;
+          }
+          return total;
+        },
+
+        // 是否拥堵
+        isBlock: function (isFlag) {
+          return isFlag ? total + 10 : total;
+        }
+      }
+    })();
+
+    console.log(car.price(0));
+    console.log(car.isBlock(true));
+  </script>
+</body>
+
+</html>

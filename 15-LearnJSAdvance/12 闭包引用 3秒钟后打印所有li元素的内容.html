@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>闭包引用 点击对应li标签输出索引号</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <ul class="nav">
+    <li>大茄子</li>
+    <li>大白菜</li>
+    <li>大西瓜</li>
+    <li>烤面筋</li>
+  </ul>
+  <script>
+    // 闭包应用: 点击li标签输出当前li的索引号
+    var lis = document.querySelector('.nav').querySelectorAll('li');
+
+    for (var i = 0; i < lis.length; i++) {
+      (function (i) {
+        setTimeout(function () {
+          console.log(lis[i].innerHTML);
+        }, 3000)
+      })(i)
+    }
+
+  </script>
+</body>
+
+</html>

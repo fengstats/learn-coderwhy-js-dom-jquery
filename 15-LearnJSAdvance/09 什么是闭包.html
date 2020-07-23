@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>什么是闭包</title>
+</head>
+
+<body>
+  <script>
+    // 闭包( closure ) 指有权访问另一个函数作用域中变量的函数 函数 函数!!!
+    // 简单理解就是一个函数作用域可以访问另外一个函数作用域内的局部变量
+    function fn() {
+      // 函数boy~
+      var num = 10;
+
+      function fun() {
+        console.log("[fun] 我是fn函数的num的值", num);
+      }
+      fun();
+    }
+
+    fn();
+  </script>
+</body>
+
+</html>
