@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>严格模式中的变化</title>
+</head>
+
+<body>
+  <script>
+    "use strict";
+    // names = "方振";
+    // 1. 我们的变量名必须先声明在使用
+    var names = 10;
+    console.log(names);
+
+    // 2. 我们不能随意删除已经声明好的变量
+    // delete num;
+
+    // 3. 
+    // [严格模式] 全局作用域函数中的 this 是 undefined
+    // [正常模式] 全局this window
+    function fn() {
+      console.log(this); // undefined
+    }
+    fn();
+
+    // 4. 
+    // [严格模式] 全局作用域函数中的 this 是 undefined，所以在严格模式下会报错
+    // [正常模式] 因为没有使用new关键字，所以内部this指向为[window全局]
+    // this.sex 也就是在全局添加了一个sex变量，所以可以直接打印
+    function Star() {
+      this.sex = '男';
+    }
+    // Star();
+    // console.log(sex);
+    // 使用new实例化后则指向创建的对象实例
+    var ldh = new Star();
+    console.log(ldh.sex);
+
+    // 5. 定时器内部 this 指向的还是 全局this window
+    // 对象、事件还是指向调用者
+    setTimeout(function () {
+      console.log(this);
+    }, 1000);
+
+    // 6. 
+    // [严格模式] 不允许出现有重名的参数
+    // [正常模式] 首先将 a = 1 赋值，然后赋值 a = 2，因为变量的层叠性，所以a最终值为2，2+2=4; 合理~
+    // function fn(a, a) {
+    //   console.log(a + a);
+    // }
+    function fn(a, b) {
+      console.log(a + b);
+    }
+    fn(1, 2);
+
+    // 7. 函数必须声明在顶层，新版本的JavaScript会引入"块级作用域"(ES6已引入)，为了与新版本接轨，不允许在非函数的代码块内声明函数
+    // (1) 
+    // if (true) {
+    //   function f1() { } // !!! 语法错误
+    //   f1();
+    // }
+    // (2)
+    // for (var i = 0; i < 5; i++) {
+    //   function f2() { } // !!! 语法错误
+    //   f2();
+    // }
+    // (3)
+    function father() { // 合法
+      function son() { } // 合法
+      son();
+    } 
+  </script>
+</body>
+
+</html>

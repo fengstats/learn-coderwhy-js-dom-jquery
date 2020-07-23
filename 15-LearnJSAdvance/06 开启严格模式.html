@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>开启严格模式</title>
+</head>
+
+<body>
+  <!-- [严格模式] 为了解决JS中一些不严谨不合理的地方，提高编译器执行速度，预留保留字，ES5新增，IE10+以上支持，IE10之前则按照非严格模式执行 -->
+  <!-- 1. 为整个脚本(script标签)开启严格模式 -->
+  <script>
+    'use strict';
+    // 使用 严格模式: 接下来的整个script标签都会以严格模式的方式运行
+  </script>
+  <script>
+    (function () {
+      'use strict';
+      // 单引、双引都可以
+    })()
+  </script>
+  <!-- 2. 为某个函数开始严格模式 -->
+  <script>
+    // 此时只是给fn函数开启了严格模式
+    function fn() {
+      'use strict';
+      // 下面代码按照严格模式执行
+    }
+
+    function fun() {
+      // 里面的还是按照普通模式执行
+    }
+  </script>
+</body>
+
+</html>

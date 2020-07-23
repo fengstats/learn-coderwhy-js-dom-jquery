@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bind 运用场景</title>
+  <button>点击禁用，等待2秒启用</button>
+  <button>点击禁用，等待2秒启用</button>
+  <button>点击禁用，等待2秒启用</button>
+</head>
+
+<body>
+  <script>
+    var btn = document.querySelectorAll("button")[0];
+
+    // 1. 通过 var that; 存储按钮对象，2秒后调用该对象启用状态
+    if (false) {
+      btn.onclick = function () {
+        // this的指向是 btn 这个按钮
+        this.disabled = true;
+        var that = this;
+        setTimeout(function () {
+          that.disabled = false;
+        }, 2000);
+      }
+    }
+
+
+    var btns = document.querySelectorAll("button");
+    // 多个按钮设置
+    for (var i = 0; i < btns.length; i++) {
+      // 2. 通过bind()方法完成
+      btns[i].onclick = function () {
+        this.disabled = true;
+        // 改变定时器内部this指向，但是不立刻调用
+        setTimeout(function () {
+          this.disabled = false;
+        }.bind(this), 2000)
+      }
+    };
+  </script>
+</body>
+
+</html>
