@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>浅拷贝</title>
+</head>
+
+<body>
+  <script>
+    // 浅拷贝只是拷贝一层，更深层次对象级别的只是拷贝引用
+    var obj = {
+      id: 1,
+      name: 'andy',
+      msg: {
+        age: 20
+      }
+    }
+
+    // a. 完成一次拷贝操作: 算浅拷贝，只拷贝了一层
+    var res = {}
+    // for (var i in obj) {
+    //   // i 是属性名 obj[i] 获取属性值
+    //   res[i] = obj[i];
+    // }
+
+    // b. es6新增语法糖
+    Object.assign(res, obj);
+
+    console.log(res);
+
+    // 修改了obj内的age 发现res内的age也改变了 由此可得该拷贝为浅拷贝
+    obj.msg.age = 28;
+
+  </script>
+</body>
+
+</html>

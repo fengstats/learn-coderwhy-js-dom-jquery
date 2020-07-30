@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>深拷贝</title>
+</head>
+
+<body>
+  <script>
+    // 深拷贝拷贝多层，每一层数据都会进行拷贝
+    var obj = {
+      id: 1,
+      name: "andy",
+      msg: {
+        age: 18
+      },
+      color: ['pink', 'red']
+    };
+
+    var res = {};
+    // 根据封装函数遍历数据达到深拷贝效果(递归)
+    function deepCopy(newObj, oldObj) {
+      for (var k in oldObj) {
+        // 判断属性值属于那种数据类型
+        // 1. 获取属性值 oldObj[k]
+        var item = oldObj[k];
+        if (item instanceof Array) {
+          // 2. 判断属性值是否是数组
+          newObj[k] = [];
+          deepCopy(newObj[k], item);
+        } else if (item instanceof Object) {
+          // 3. 判断属性值是否是对象
+          newObj[k] = {};
+          deepCopy(newObj[k], item);
+        } else {
+          // 4. 两种数据类型都不是那么属于简单数据类型，直接拷贝
+          newObj[k] = item;
+        }
+      }
+    }
+    deepCopy(res, obj);
+
+    console.log(res);
+    // 修改了obj内的age 发现res内的age不会改变了 由此可得该拷贝为深拷贝
+    obj.msg.age = 122;
+    console.log(res);
+
+    // 数组也属于Object类型
+    console.log(Array instanceof Object);
+
+  </script>
+</body>
+
+</html>
