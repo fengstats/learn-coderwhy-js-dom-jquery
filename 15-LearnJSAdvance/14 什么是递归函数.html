@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>什么是递归函数</title>
+</head>
+
+<body>
+  <script>
+    // 递归函数: 函数内部自己调用自己，这个函数指的就是递归函数 
+    var num = 1;
+    function fn() {
+      console.log("[递归] 哎呀呀 我要让这句话打印六次");
+      if (num == 6) {
+        return;
+      }
+      num++;
+      fn()
+    }
+    fn();
+
+
+    // 1. 求1~n[1 * 2 * 3...* n] 的阶乘
+    function factorial(n) {
+      if (n == 1) {
+        return 1;
+      } else {
+        return n * factorial(n - 1);
+      }
+    }
+    // 详细思路: 假设用户输入的为3
+    // 第1次 return 3 * fn(3 - 1)
+    // 第2次 return 3 * (2 * fn(2 - 1))
+    // 第3次 return 3 * (2 * 1 * 1)
+    // 最终结果 3 * 2 = 6
+
+    console.log("[递归求值] 我算算先 别着急", factorial(3));
+
+
+
+  </script>
+</body>
+
+</html>
