@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正则中的量词符</title>
+</head>
+
+<body>
+  <script>
+    // 量词符:   用来设定某个模式出现的次数
+    // 简单理解: 就是让下面的a这个字符重复多少次
+    // var reg = /^a$/;
+
+    // 1. * 相当于 >= 0 可以出现0次或者很多次
+    var reg1 = /^a*$/;
+    console.log(reg1.test('')); // true
+    console.log(reg1.test('a')); // true
+    console.log(reg1.test('aa')); // true
+
+    console.log('--------------------------');
+
+    // 2. + 相当于 >= 1 可以出现1次或者很多次
+    var reg1 = /^a+$/;
+    console.log(reg1.test('')); // false
+    console.log(reg1.test('a')); // true
+    console.log(reg1.test('aa')); // true
+
+    console.log('--------------------------');
+
+    // 3. ? 相当于 1 || 0
+    var reg1 = /^a?$/;
+    console.log(reg1.test('')); // true
+    console.log(reg1.test('a')); // true
+    console.log(reg1.test('aa')); // false
+
+    console.log('--------------------------');
+
+    // 4. {3} 重复3次[精确限定]
+    var reg1 = /^a{3}$/;
+    console.log(reg1.test('')); // false
+    console.log(reg1.test('a')); // false
+    console.log(reg1.test('aaa')); // true
+
+    console.log('--------------------------');
+
+    // 5. {3, } 相当于 >= 3
+    var reg1 = /^a{3,}$/;
+    console.log(reg1.test('a')); // false
+    console.log(reg1.test('aaa')); // true
+    console.log(reg1.test('aaaa')); // true
+
+    console.log('--------------------------');
+
+    // 6. {3, 6} 相当于 >= 3 <= 6
+    var reg1 = /^a{3,6}$/;
+    console.log(reg1.test('a')); // false
+    console.log(reg1.test('aaa')); // true
+    console.log(reg1.test('aaaa')); // true
+    console.log(reg1.test('aaaaaaa')); // 超过6，false
+
+  </script>
+</body>
+
+</html>

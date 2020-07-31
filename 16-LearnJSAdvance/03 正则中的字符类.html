@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正则中的字符类</title>
+</head>
+
+<body>
+  <script>
+    // 字符类 [] 表示在[]内的字符可供选择，只需要匹配其中一个就可以了
+    // 只要包含有a 或者 包含有b 或者包含c 都符合
+    var reg = /[abc]/;
+    console.log(reg.test("andy"));  // 包含a，true
+    console.log(reg.test("baby"));  // 包含a b，true
+    console.log(reg.test("color")); // 包含c，true
+    console.log(reg.test("red"));   // 不包含任何一个，false
+
+
+    console.log("------------------------------");
+
+    // 三选一 只有字符串为a 或者 b 或者 c 这三个字母才返回 true
+    var reg2 = /^[abc]$/;
+    console.log(reg2.test('aa'));
+    console.log(reg2.test('a'));
+    console.log(reg2.test('c'));
+    console.log(reg2.test('b'));
+    console.log(reg2.test('aabc'));
+
+    console.log("------------------------------");
+
+    // - 范围符 什么到什么之间符合匹配 例如 ^[a-z]$ 小写字母a 到 小写字母z 
+    // 之间的26个字母中的任意一个字母都可以符合匹配
+    var reg3 = /^[a-z]$/;
+    console.log(reg3.test('a'));   // true
+    console.log(reg3.test('z'));   // true
+    console.log(reg3.test('b'));   // true
+    console.log(reg3.test('g'));   // true
+    console.log(reg3.test('Z'));   // false
+    console.log(reg3.test('aa'));  // false
+
+    console.log("------------------------------");
+
+    // 字符组合
+    // ^ $ 用户可以输入一个字符
+    // a-z a 到 z 匹配
+    // A-Z A 到 Z 匹配
+    // 0-9 0 到 9 匹配
+    // _   下划线
+    // -   短横杠
+    var reg3 = /^[a-zA-Z0-9_-]$/;
+    console.log(reg3.test('a'));   // true
+    console.log(reg3.test('z'));   // true
+    console.log(reg3.test('b'));   // true
+    console.log(reg3.test('g'));   // true
+    console.log(reg3.test('Z'));   // true
+    console.log(reg3.test('_'));   // true
+    console.log(reg3.test('？'));  // false
+
+    console.log("------------------------------");
+
+    // 注意
+    // 注！！！如果中括号[] 内有^括号的话 意为取反 千万和边界符^区别 勿混淆
+    var reg3 = /^[^a-zA-Z0-9_-]$/;
+    console.log(reg3.test('a'));   // false
+    console.log(reg3.test('z'));   // false
+    console.log(reg3.test('b'));   // false
+    console.log(reg3.test('g'));   // false
+    console.log(reg3.test('Z'));   // false
+    console.log(reg3.test('_'));   // false
+    console.log(reg3.test('？'));  // true
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正则中的元字符[特殊字符]</title>
+</head>
+
+<body>
+  <script>
+    // 1. 边界符 ^ $
+    // 正则内// 不需要加引号 不管是数字型还是字符串型
+    // /abc/   只要包含有abc这个字符串返回的都是true
+    var reg = /abc/;
+    console.log(reg.test('abc'));   // true
+    console.log(reg.test('abcd'));  // true
+    console.log(reg.test('aabcc')); // true
+
+    console.log("---------------------------------");
+    // 必须以abc开头
+    var reg2 = /^abc/;
+    console.log(reg2.test("abcs"));  // true
+    console.log(reg2.test("aabcs")); // fasle
+
+    console.log("---------------------------------");
+    // 必须是abc字符串才符合[精确匹配]
+    var reg2 = /^abc$/;
+    console.log(reg2.test("abcs"));  // false
+    console.log(reg2.test("aabcs")); // fasle
+    console.log(reg2.test("abc"));   // true
+
+  </script>
+</body>
+
+</html>
