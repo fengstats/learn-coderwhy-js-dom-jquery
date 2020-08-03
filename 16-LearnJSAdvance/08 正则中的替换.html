@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正则中的替换</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <textarea name="" id="message" rows="10" cols="50"></textarea>
+  <button>提交</button>
+  <div></div>
+
+  <script>
+    // 旧 字符串替换 replace
+    var str = "我是andy 你是red";
+    var newStr = str.replace("andy", "baby");
+    console.log("原字符: ", str);
+    console.log("新字符: ", newStr);
+
+    var text = document.querySelector('textarea');
+    var btn = document.querySelector('button');
+    var div = document.querySelector('div');
+
+    btn.onclick = function () {
+      // 将 激情 与 gay 进行全局匹配 替换为 **
+      div.innerHTML = text.value.trim().replace(/激情|gay/g, ' ** ');
+    }
+
+  </script>
+</body>
+
+</html>

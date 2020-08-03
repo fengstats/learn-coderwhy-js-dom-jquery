@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用户名验证</title>
+  <style>
+    .error {
+      color: red;
+    }
+
+    .right {
+      color: green;
+    }
+
+    span {
+      color: gray;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="text" class="uname" id=""> <span>请输入用户名</span>
+  <script>
+    // 量词是设定某个模式出现的次数
+    // 下面这个模式限定了用户只能输入英文字母、数字、下划线、短横线 但是存在边界符和[] 这就限定了只能够多选1
+    // var reg = /^[a-zA-Z0-9_-]$/;
+    // console.log(reg.test('a'));
+    // console.log(reg.test('9'));
+    // console.log(reg.test('11'));
+    // console.log(reg.test('aa'));
+
+    // console.log('---------------------');
+
+    // 使用{6, 16} 限定 >= 6 <= 16
+    var reg1 = /^[a-zA-Z0-9_-]{6,16}$/;
+
+    // console.log(reg1.test('andy_001'));     // true
+    // console.log(reg1.test('999001'));       // true
+    // console.log(reg1.test('ILoveYou'));     // true
+    // console.log(reg1.test('my_name_is_~')); // false
+
+    var uname = document.querySelector('.uname');
+    var span = document.querySelector('span');
+    uname.onblur = function () {
+      if (reg1.test(this.value)) {
+        console.log("可以的你已经通过了我的考验", this.value);
+        span.innerHTML = "用户输入正确";
+        span.className = "right";
+      } else {
+        console.log("你写的啥玩意儿？", this.value);
+        span.innerHTML = "用户输入错误";
+        span.className = "error";
+      }
+    }
+
+  </script>
+</body>
+
+</html>
