@@ -1,39 +1,36 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>05-立即执行函数</title>
+    <script src="05-flexible分析.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>05-立即执行函数</title>
-  <script src="05-flexible分析.js"></script>
-</head>
+  <body>
+    <a href="javascript:;">你好</a>
+    <script>
+      // 1. 普通函数: 编写后，需要人为调用才能执行
+      function fn() {
+        console.log('我是fn函数 我需要你来调用')
+      }
 
-<body>
-  <a href="javascript:;">你好</a>
-  <script>
-    // 1. 普通函数: 编写后，需要人为调用才能执行
-    function fn() {
-      console.log('我是fn函数 我需要你来调用');
-    }
+      fn()
 
-    fn();
+      // 2. 立即执行函数: 编写后, 自动调用
+      // 好处: 独立创建一个作用域，内部所有变量都是局部变量
+      // 写法1: (function() {})()
+      ;(function (a) {
+        console.log('我是立即执行函数 写法1 参数', a)
+        // 也可以进行参数传递
+      })(10)
 
-    // 2. 立即执行函数: 编写后, 自动调用
-    // 好处: 独立创建一个作用域，内部所有变量都是局部变量
-    // 写法1: (function() {})()
-    (function (a) {
-      console.log("我是立即执行函数 写法1 参数", a);
-      // 也可以进行参数传递
-    })(10);
+      // 多个立即执行函数需要使用分号隔开
 
-    // 多个立即执行函数需要使用分号隔开
-
-    // 写法2: (function(){}())
-    (function (a, b) {
-      console.log('我是理解执行函数 写法2 参数', a, b);
-    }(1, 2))
-
-  </script>
-</body>
-
+      // 写法2: (function(){}())
+      ;(function (a, b) {
+        console.log('我是立即执行函数 写法2 参数', a, b)
+      })(1, 2)
+    </script>
+  </body>
 </html>
